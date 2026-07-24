@@ -13,6 +13,12 @@
     },
   ];
   const certMarquee = [...certifications, ...certifications];
+  const BRANDS = [
+    { name: "Amazon.in", img: "https://krishnaayurved.com/cdn/shop/files/ka-amzin-logo.png?v=1775421770&width=110" },
+    { name: "Flipkart", img: "https://krishnaayurved.com/cdn/shop/files/ka-flipk-logo.png?v=1775421768&width=110" },
+    { name: "Meesho", img: "https://krishnaayurved.com/cdn/shop/files/meesho.png?v=1777630386&width=110" },
+   
+  ];
 
   return (
     <footer className="f6">
@@ -56,6 +62,11 @@
             <img src="/img/logo.png" alt="Pulp Ayurveda" />
           </a>
           <p className="f6-para">Pure, handcrafted Ayurvedic wellness - herbs and rituals sourced with care, delivered to your door.</p>
+          <div className="soc-row">
+            <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="1" /></svg></a>
+            <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M14 4v10.5a3.5 3.5 0 11-3-3.46" /><path d="M14 4c0 2.5 2 4 4 4" /></svg></a>
+            <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><rect x="3" y="6" width="18" height="12" rx="3" /><path d="M11 10l4 2-4 2z" fill="currentColor" stroke="none" /></svg></a>
+          </div>
           <div className="f6-links">
             <a href="#">Privacy Policy</a>
             <a href="#">Terms &amp; Condition</a>
@@ -82,10 +93,15 @@
             <input type="email" placeholder="Your email address" />
             <button type="button">Join</button>
           </div>
-          <div className="soc-row">
-            <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="1" /></svg></a>
-            <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M14 4v10.5a3.5 3.5 0 11-3-3.46" /><path d="M14 4c0 2.5 2 4 4 4" /></svg></a>
-            <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><rect x="3" y="6" width="18" height="12" rx="3" /><path d="M11 10l4 2-4 2z" fill="currentColor" stroke="none" /></svg></a>
+          <div className="f6-brand-section">
+            <small className="f6-brand-label">Also available at 3 platforms</small>
+            <div className="f6-brand-row">
+              {BRANDS.map((brand) => (
+                <div className="f6-brand-chip" key={brand.name}>
+                  <img src={brand.img} alt={brand.name} loading="lazy" />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
         <div className="f6-watermark">PULP AYURVEDA</div>
