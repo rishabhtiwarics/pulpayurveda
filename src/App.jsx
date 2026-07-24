@@ -7,6 +7,7 @@ import MiddleBanner from "./components/home/MiddleBanner";
 import Bestsellers from "./components/home/Bestsellers";
 import PromiseBanner from "./components/home/PromiseBanner";
 import WatchShop from "./components/home/WatchShop";
+import PulpTestimonials from "./components/home/PulpTestimonials";
 
 export default function App() {
   return (
@@ -19,7 +20,9 @@ export default function App() {
         <MiddleBanner />
         <Bestsellers />
         <PromiseBanner />
+      
         <WatchShop />
+          <PulpTestimonials />
       </main>
       <Footer />
     </>
