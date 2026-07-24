@@ -42,7 +42,8 @@ export default function CustomerFavorites() {
   const tabs = useMemo(() => ["all", ...categories.map((c) => c.id)], [categories]);
 
   const visibleProducts = useMemo(() => {
-    const filtered = activeFilter === "all" ? products : products.filter((p) => p.category === activeFilter);
+    const nonCombo = products.filter((p) => !p.isComboOffer);
+    const filtered = activeFilter === "all" ? nonCombo : nonCombo.filter((p) => p.category === activeFilter);
     return filtered.slice(0, maxVisible);
   }, [activeFilter, maxVisible, products]);
 

@@ -35,7 +35,8 @@ export default function ShopPage({ initialCategory }) {
   const tabs = useMemo(() => ["all", ...categories.map((c) => c.id)], [categories]);
 
   const visibleProducts = useMemo(() => {
-    let list = activeFilter === "all" ? products : products.filter((p) => p.category === activeFilter);
+    const nonCombo = products.filter((p) => !p.isComboOffer);
+    let list = activeFilter === "all" ? nonCombo : nonCombo.filter((p) => p.category === activeFilter);
     const term = search.trim().toLowerCase();
     if (term) list = list.filter((p) =>
       p.name.toLowerCase().includes(term) ||

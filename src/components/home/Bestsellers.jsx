@@ -18,7 +18,7 @@ export default function Bestsellers() {
   }, []);
 
   const bestsellerProducts = products
-    .filter((p) => p.isBestseller)
+    .filter((p) => p.isBestseller && !p.isComboOffer)
     .slice(0, visibleCount);
 
   return (

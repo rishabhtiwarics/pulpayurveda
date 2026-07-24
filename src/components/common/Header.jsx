@@ -88,7 +88,7 @@ function SearchPanel({ open, onClose, inputRef, panelRef, onMouseEnter, onMouseL
   const filteredProducts = useMemo(() => {
     const term = query.trim().toLowerCase();
     if (!term) return [];
-    return products.filter((product) => product.name.toLowerCase().includes(term));
+    return products.filter((product) => !product.isComboOffer && product.name.toLowerCase().includes(term));
   }, [query, products]);
 
   return (
