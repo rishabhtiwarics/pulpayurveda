@@ -1,33 +1,43 @@
 ﻿export default function Footer() {
-  const availableBrands = [
-    { name: "Amazon.in", img: "https://krishnaayurved.com/cdn/shop/files/ka-amzin-logo.png?v=1775421770&width=110" },
-    { name: "Flipkart", img: "https://krishnaayurved.com/cdn/shop/files/ka-flipk-logo.png?v=1775421768&width=110" },
-    { name: "Blinkit", img: "https://krishnaayurved.com/cdn/shop/files/blinkit.png?v=1777630386&width=110" },
-    { name: "Zepto", img: "https://krishnaayurved.com/cdn/shop/files/zepto.png?v=1777630386&width=110" },
-    { name: "Swiggy", img: "https://krishnaayurved.com/cdn/shop/files/swiggy.png?v=1777630386&width=110" },
-    { name: "Meesho", img: "https://krishnaayurved.com/cdn/shop/files/meesho.png?v=1777630386&width=110" },
+  const certifications = [
+    { name: "GMP Quality", img: "/img/cert-gmp.png" },
+    {
+      name: "Ministry of AYUSH",
+      img: "https://commons.wikimedia.org/wiki/Special:FilePath/Logo_Ministry_of_AYUSH.png"
+    },
+    { name: "Make in India", img: "/img/cert-makeinindia.png" },
+    { name: "FSSAI", img: "/img/cert-fssai.png" },
+    {
+      name: "ISO 9001",
+      img: "https://commons.wikimedia.org/wiki/Special:FilePath/ISO_9001-2015.svg"
+    },
   ];
-  const availableMarqueeBrands = [...availableBrands, ...availableBrands, ...availableBrands, ...availableBrands];
+  const certMarquee = [...certifications, ...certifications];
 
   return (
     <footer className="f6">
-      <section id="also-available-at">
-        <div className="alt1">
+      <section id="certified-quality">
+        <div className="alt1 wrap">
           <div className="alt1-head">
             <span className="eyebrow">
               <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2l2.4 7.2H22l-6 4.4 2.4 7.2L12 16.4 5.6 20.8 8 13.6 2 9.2h7.6z" /></svg>
-              Also Available At
+              Certified Quality
             </span>
-            <h2>Find us wherever you shop</h2>
-            <p>Same quality, same trust — across every platform you already use.</p>
+            <h2>Global Standards</h2>
+            <p>We adhere to recognised global standards and certifications to ensure product safety and quality.</p>
           </div>
           <div className="alt1-strip">
-            <div className="alt1-track">
-              {availableMarqueeBrands.map((brand, index) => (
-                <div className="alt1-item" key={`${brand.name}-${index}`}>
-                  <div className="alt1-logo-chip">
-                    <img src={brand.img} alt={brand.name} loading="lazy" />
+            <div className="alt1-track cert-track" aria-hidden="false">
+              {certMarquee.map((cert, idx) => (
+                <div
+                  className="alt1-item cert-item"
+                  key={`cert-${idx}`}
+                  aria-hidden={idx >= certifications.length ? "true" : "false"}
+                >
+                  <div className="alt1-logo-chip cert-chip">
+                    <img src={cert.img} alt={cert.name} loading="lazy" />
                   </div>
+                  <div className="cert-name">{cert.name}</div>
                 </div>
               ))}
             </div>
