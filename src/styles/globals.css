@@ -7,6 +7,7 @@
     --coral-2:#1F1F1F;
     --ink:#111111;
     --line:rgba(0,0,0,0.12);
+  --pulp-testimonials-speed: 40s;
     --maxw:1440px;
   }
   *{box-sizing:border-box;}
@@ -123,16 +124,17 @@
 /* Namespaced pulp testimonials (avoids selector conflicts) */
 .pulp-testimonials-section{background:var(--coral-2);padding:54px 0;overflow:hidden}
 .pulp-testimonials-head{max-width:var(--maxw);padding:0 20px;text-align:center}
-.pulp-testimonials-head .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;font-weight:800;color:#000;background:#fff;padding:6px 14px;border-radius:999px;border:1px solid rgba(0,0,0,0.12);margin-bottom:14px}
+.pulp-testimonials-head .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;font-weight:800;color:#000;background:#fff;padding:6px 14px;border-radius:999px;border:1px solid rgba(0,0,0,0.12);margin-bottom:8px}
 .pulp-testimonials-head .eyebrow svg{width:16px;height:16px;flex:none;background:#000;color:#fff;border-radius:50%;padding:4px;display:inline-block}
-.pulp-testimonials-head h2{color:#fff;font-family:'Baloo 2',sans-serif;font-size:clamp(24px,3.2vw,34px);margin:0 0 8px}
+.pulp-testimonials-head h2{color:#fff;font-family:'Baloo 2',sans-serif;font-size:clamp(24px,3.2vw,34px);margin:0 0 6px}
+/* speed badge removed */
 .pulp-testimonials-head p{color:rgba(255,255,255,.6);font-size:14.5px;font-weight:600;margin:0}
 .pulp-testimonials-strip{position:relative;width:100%;overflow:hidden}
 .pulp-testimonials-strip .wrap{overflow:hidden !important;position:relative;width:100%;box-sizing:border-box;max-width:var(--maxw);margin:18px auto 0;padding:0 30px}
 .pulp-testimonials-strip::before,.pulp-testimonials-strip::after{content:"";position:absolute;top:0;bottom:0;width:90px;z-index:2;pointer-events:none}
 .pulp-testimonials-strip::before{left:0;background:linear-gradient(90deg,var(--coral-2),transparent)}
 .pulp-testimonials-strip::after{right:0;background:linear-gradient(270deg,var(--coral-2),transparent)}
-.pulp-testimonials-track{display:flex;width:max-content;gap:18px;animation:pulpTestimonialsScroll 38s linear infinite;padding:0 30px;box-sizing:border-box;will-change:transform}
+.pulp-testimonials-track{display:flex;width:max-content;gap:18px;animation:pulpTestimonialsScroll var(--pulp-testimonials-speed) linear infinite;padding:0 30px;box-sizing:border-box;will-change:transform;transform:translateZ(0)}
 .pulp-testimonial-card{flex:none;width:320px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:20px 22px;display:flex;gap:14px;align-items:flex-start;justify-content:flex-start}
 .pulp-testimonial-card{border-color:rgba(214,162,30,0.08);box-shadow:0 6px 18px rgba(0,0,0,0.06)}
 /* Hover animation removed as requested */
@@ -142,9 +144,9 @@
 .pulp-testimonial-card .pulp-testimonial-content strong{display:block;font-family:'Baloo 2',sans-serif;color:#fff;font-size:13.5px;margin-bottom:4px}
 .pulp-testimonial-card .pulp-testimonial-content p{margin:0;color:rgba(255,255,255,.65);font-size:13px;line-height:1.6;font-weight:600}
 .pulp-testimonial-card .pulp-testimonial-content .pulp-testimonial-rating{color:#D6A21E;font-size:11px;letter-spacing:1px;display:block;margin-top:6px}
-@keyframes pulpTestimonialsScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@keyframes pulpTestimonialsScroll{0%{transform:translate3d(0,0,0)}100%{transform:translate3d(-50%,0,0)}}
 
-@media (max-width:900px){.pulp-testimonial-card{width:280px}.pulp-testimonials-track{animation-duration:26s}}
+@media (max-width:900px){.pulp-testimonial-card{width:280px}.pulp-testimonials-track{--pulp-testimonials-speed:26s}}
   .burger span{width:18px;height:2px;background:#fff;border-radius:2px;}
   .burger:hover{transform:translateY(-1px);background:#000;}
 
@@ -419,6 +421,7 @@
   .a1-video-box::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 55%,rgba(0,0,0,.7) 100%);pointer-events:none;z-index:2;}
   .a1-controls{position:absolute;top:10px;right:10px;z-index:4;display:flex;flex-direction:column;gap:8px;}
   .a1-ctrl{width:24px;height:24px;border-radius:50%;border:1.5px solid rgba(255,255,255,0.8);background:rgba(0,0,0,0.4);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;cursor:pointer;color:#fff;}
+  @media (max-width:600px){.a1-ctrl{backdrop-filter:none;background:rgba(0,0,0,0.28);}}
   .a1-ctrl.on{background:#fff;border-color:#fff;color:#000;box-shadow:0 0 0 4px rgba(255,255,255,0.25);}
   .a1-ctrl svg{width:11px;height:11px;}
   .a1-info{position:absolute;left:0;right:0;bottom:0;z-index:3;padding:10px 12px 12px;display:flex;align-items:center;gap:9px;}
