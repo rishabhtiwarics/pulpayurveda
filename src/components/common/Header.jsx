@@ -1,15 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-
-const products = [
-  { name: "Virvex", image: "/img/categories1.jpeg", rating: 5, price: 999, discountPrice: 799 },
-  { name: "Venora", image: "/img/categories2.jpeg", rating: 4.8, price: 1299, discountPrice: 999 },
-  { name: "Pressova", image: "/img/categories1.jpeg", rating: 4.2, price: 899, discountPrice: 699 },
-  { name: "Nestara", image: "/img/categories2.jpeg", rating: 4.9, price: 1499, discountPrice: 1199 },
-  { name: "Livera", image: "/img/categories1.jpeg", rating: 4.6, price: 1099, discountPrice: 899 },
-  { name: "Flexora", image: "/img/categories2.jpeg", rating: 4.3, price: 799, discountPrice: 599 },
-  { name: "Femiva", image: "/img/categories1.jpeg", rating: 4.7, price: 1199, discountPrice: 999 },
-  { name: "Cardiva", image: "/img/categories2.jpeg", rating: 4.4, price: 1399, discountPrice: 1099 }
-];
+import { useProducts } from "../../store/useProductStore.jsx";
+import ProductCard from "../shop/ProductCard";
+import ProductCardSkeleton from "../shop/ProductCardSkeleton";
 
 const demoUser = {
   name: "Aarav Mehta",
@@ -19,7 +11,7 @@ const demoUser = {
 
 function Logo() {
   return (
-    <a href="#" className="logo-pill" aria-label="Pulp Ayurveda">
+    <a href="/" className="logo-pill" aria-label="Pulp Ayurveda">
       <img src="/img/logo.png" alt="Pulp Ayurveda" />
     </a>
   );
@@ -90,12 +82,14 @@ function Announcement() {
 }
 
 function SearchPanel({ open, onClose, inputRef, panelRef, onMouseEnter, onMouseLeave }) {
+  const { products, loading } = useProducts();
   const [query, setQuery] = useState("");
+
   const filteredProducts = useMemo(() => {
     const term = query.trim().toLowerCase();
     if (!term) return [];
     return products.filter((product) => product.name.toLowerCase().includes(term));
-  }, [query]);
+  }, [query, products]);
 
   return (
     <div ref={panelRef} className={`search-panel${open ? " open" : ""}`} id="searchPanel" onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
@@ -109,22 +103,11 @@ function SearchPanel({ open, onClose, inputRef, panelRef, onMouseEnter, onMouseL
           <input ref={inputRef} value={query} onChange={(event) => setQuery(event.target.value)} type="text" placeholder="Search herbs, blends, rituals..." id="searchInput" />
         </div>
         <div className="search-results-row">
-          {query.trim() && filteredProducts.length ? (
+          {loading && query.trim() ? (
+            <ProductCardSkeleton variant="search" count={3} />
+          ) : query.trim() && filteredProducts.length ? (
             filteredProducts.slice(0, 5).map((product) => (
-              <div className="search-product-card" key={product.name}>
-                <img src={product.image} alt={product.name} />
-                <div className="search-product-info">
-                  <span className="search-product-title">{product.name}</span>
-                  <div className="search-product-rating">{"★".repeat(Math.round(product.rating || 5))}<span style={{color: "#ccc"}}>{"★".repeat(5 - Math.round(product.rating || 5))}</span></div>
-                  <div className="search-product-price-row">
-                    <span className="search-product-discount-price">₹{product.discountPrice || 799}</span>
-                    <span className="search-product-original-price">₹{product.price || 999}</span>
-                  </div>
-                </div>
-                <button type="button" className="search-cart-btn" aria-label={`Add ${product.name} to cart`} onClick={() => {}}>
-                  <CartIcon />
-                </button>
-              </div>
+              <ProductCard key={product.id} product={product} variant="search" />
             ))
           ) : query.trim() ? (
             <div className="search-empty">No products found</div>
@@ -136,6 +119,7 @@ function SearchPanel({ open, onClose, inputRef, panelRef, onMouseEnter, onMouseL
 }
 
 function DesktopNav({ shopOpen, setShopOpen, closeUserMenu }) {
+  const { categories, loading } = useProducts();
   const [hovering, setHovering] = useState(false);
   const shopCloseTimer = useRef(null);
   const open = shopOpen || hovering;
@@ -153,7 +137,7 @@ function DesktopNav({ shopOpen, setShopOpen, closeUserMenu }) {
 
   return (
     <nav className="nav-desktop">
-      <a href="#" className="active">Home</a>
+      <a href="/" className="active">Home</a>
       <div
         className={`nav-shop${open ? " open" : ""}`}
         id="navShop"
@@ -168,12 +152,26 @@ function DesktopNav({ shopOpen, setShopOpen, closeUserMenu }) {
           <div className="wrap nav-shop-panel-inner">
             <div className="nav-shop-panel-head">
               <h4>Shop by Category</h4>
-              <a href="#" className="nav-shop-viewall">View all products
+              <a href="/shop" className="nav-shop-viewall">View all products
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14" /><path d="M13 6l6 6-6 6" /></svg>
               </a>
             </div>
             <div className="nav-shop-grid">
-              {products.map((product) => <a href="#" key={product.name}><img src={product.image} alt={product.name} /><span>{product.name}</span></a>)}
+              {loading ? (
+                Array.from({ length: 8 }).map((_, i) => (
+                  <div key={`nav-skel-${i}`} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "6px" }}>
+                    <div className="skeleton" style={{ width: "56px", height: "56px", borderRadius: "50%" }} />
+                    <div className="skeleton skeleton-line" style={{ width: "52px", height: "12px" }} />
+                  </div>
+                ))
+              ) : (
+                categories.map((cat) => (
+                  <a href={`/shop?category=${cat.id}`} key={cat.id}>
+                    <img src={cat.image} alt={cat.name} />
+                    <span>{cat.name}</span>
+                  </a>
+                ))
+              )}
             </div>
           </div>
         </div>
@@ -213,6 +211,7 @@ function UserMenu({ loggedIn, setLoggedIn, open, setOpen, onMouseEnter, onMouseL
 }
 
 function Sidebar({ open, onClose, loggedIn, setLoggedIn }) {
+  const { categories, loading } = useProducts();
   const [accordionOpen, setAccordionOpen] = useState(false);
 
   return (
@@ -227,14 +226,27 @@ function Sidebar({ open, onClose, loggedIn, setLoggedIn }) {
         </div>
         <div className="sidebar-main">
           <nav className="sidebar-nav">
-            <a href="#">Home</a>
+            <a href="/">Home</a>
             <div className="sidebar-accordion">
               <button className="sidebar-accordion-toggle" id="shopAccordionToggle" aria-expanded={accordionOpen} onClick={() => setAccordionOpen((value) => !value)}>
                 Shop
                 <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" className="accordion-chevron"><polyline points="6 9 12 15 18 9" /></svg>
               </button>
               <div className={`sidebar-accordion-panel${accordionOpen ? " open" : ""}`} id="shopAccordionPanel">
-                {products.map((product) => <a href="#" key={product.name}><img src={product.image} alt={product.name} />{product.name}</a>)}
+                {loading ? (
+                  Array.from({ length: 8 }).map((_, i) => (
+                    <div key={`sb-skel-${i}`} style={{ display: "flex", alignItems: "center", gap: "10px", padding: "8px 0" }}>
+                      <div className="skeleton" style={{ width: "36px", height: "36px", borderRadius: "50%", flexShrink: 0 }} />
+                      <div className="skeleton skeleton-line" style={{ width: "80px", height: "12px" }} />
+                    </div>
+                  ))
+                ) : (
+                  categories.map((cat) => (
+                    <a href={`/shop?category=${cat.id}`} key={cat.id}>
+                      <img src={cat.image} alt={cat.name} />{cat.name}
+                    </a>
+                  ))
+                )}
               </div>
             </div>
             <a href="#">About</a>
@@ -326,7 +338,9 @@ export default function Header() {
       document.removeEventListener("click", handleClick);
       document.removeEventListener("keydown", handleKey);
     };
-  }, []);  function closeUserMenu() {
+  }, []);
+
+  function closeUserMenu() {
     clearTimeout(userCloseTimer.current);
     setUserMenuOpen(false);
   }
@@ -342,7 +356,8 @@ export default function Header() {
     clearTimeout(userCloseTimer.current);
     userCloseTimer.current = setTimeout(() => setUserMenuOpen(false), 220);
   }
-function openSearchDropdown() {
+
+  function openSearchDropdown() {
     clearTimeout(searchCloseTimer.current);
     setSearchOpen(true);
     setShopOpen(false);
@@ -393,13 +408,3 @@ function openSearchDropdown() {
     </>
   );
 }
-
-
-
-
-
-
-
-
-
-

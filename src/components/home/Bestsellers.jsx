@@ -1,7 +1,10 @@
-﻿import { useEffect, useState } from "react";
-import { CartIcon, RatingStars, products, titleCase } from "./CustomerFavorites";
+import { useEffect, useState } from "react";
+import { useProducts } from "../../store/useProductStore.jsx";
+import ProductCard from "../shop/ProductCard";
+import ProductCardSkeleton from "../shop/ProductCardSkeleton";
 
 export default function Bestsellers() {
+  const { products, loading } = useProducts();
   const [visibleCount, setVisibleCount] = useState(4);
 
   useEffect(() => {
@@ -14,7 +17,9 @@ export default function Bestsellers() {
     return () => window.removeEventListener("resize", updateVisibleCount);
   }, []);
 
-  const bestsellerProducts = products.slice(0, visibleCount);
+  const bestsellerProducts = products
+    .filter((p) => p.isBestseller)
+    .slice(0, visibleCount);
 
   return (
     <section className="fav-section bestsellers-section">
@@ -28,28 +33,23 @@ export default function Bestsellers() {
             <h2>Bestsellers</h2>
             <p>Most loved by our customers</p>
           </div>
-          <a href="#" className="fav-cta">
+          <a href="/shop" className="fav-cta">
             View all products
             <span className="fav-cta-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14" /><path d="M13 6l6 6-6 6" /></svg></span>
           </a>
         </div>
 
         <div className="fav-grid" id="bestsellersGrid">
-          {bestsellerProducts.map((product) => (
-            <article className="fav-card" data-category={product.category} key={`bestseller-${product.category}-${product.name}`}>
-              <div className="fav-img"><img src={product.image} alt={product.name} /></div>
-              <p className="fav-cat-tag">{titleCase(product.category)}</p>
-              <h3 className="fav-name">{product.name}</h3>
-              <div className="fav-rating"><RatingStars value={product.rating} /><strong>({product.rating})</strong></div>
-              <div className="fav-bottom">
-                <span className="fav-price">{product.price}</span>
-                <button className="fav-add" type="button" aria-label={`Add ${product.name} to cart`}><CartIcon />Add to cart</button>
-              </div>
-            </article>
-          ))}
+          {loading ? (
+            <ProductCardSkeleton variant="grid" count={visibleCount} />
+          ) : (
+            bestsellerProducts.map((product) => (
+              <ProductCard key={product.id} product={product} variant="grid" />
+            ))
+          )}
         </div>
 
-        <a href="#" className="fav-cta fav-mobile-cta">
+        <a href="/shop" className="fav-cta fav-mobile-cta">
           View all products
           <span className="fav-cta-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14" /><path d="M13 6l6 6-6 6" /></svg></span>
         </a>

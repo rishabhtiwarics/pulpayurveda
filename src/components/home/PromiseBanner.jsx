@@ -1,4 +1,7 @@
-﻿const features = [
+import { useEffect } from "react";
+import { useProducts } from "../../store/useProductStore.jsx";
+
+const features = [
   {
     title: "Sustainable",
     text: "Eco-friendly packaging and responsible sourcing.",
@@ -29,29 +32,57 @@ function Icon({ children }) {
   );
 }
 
+function OfferSkeleton() {
+  return (
+    <div className="pb-text pb-offer">
+      <div className="skeleton skeleton-line" style={{ width: "90px", height: "18px", marginBottom: "14px" }} />
+      <div className="skeleton skeleton-line" style={{ width: "85%", height: "28px", marginBottom: "10px" }} />
+      <div className="skeleton skeleton-line" style={{ width: "100%", height: "16px", marginBottom: "6px" }} />
+      <div className="skeleton skeleton-line" style={{ width: "80%", height: "16px", marginBottom: "18px" }} />
+      <div style={{ display: "flex", gap: "12px", marginBottom: "22px" }}>
+        <div className="skeleton skeleton-line" style={{ width: "80px", height: "28px" }} />
+        <div className="skeleton skeleton-line" style={{ width: "60px", height: "28px" }} />
+      </div>
+      <div className="skeleton skeleton-line" style={{ width: "140px", height: "42px", borderRadius: "8px" }} />
+    </div>
+  );
+}
+
 export default function PromiseBanner() {
+  const { products, comboOffer, loading } = useProducts();
+
+  const offerProduct = !loading && comboOffer
+    ? products.find((p) => p.id === comboOffer.productId)
+    : null;
+
   return (
     <section className="promise-banner">
-      <div className="pb-text pb-offer">
-        <span className="eyebrow pb-eyebrow">
-          <Icon><path d="M12 2.5s7 7.5 7 12.5a7 7 0 11-14 0c0-5 7-12.5 7-12.5z" /></Icon>
-          Combo Offer
-        </span>
-        <h2>Neem Detox Serum with Vitamin C</h2>
-        <p>Daily herbal support for a cleaner wellness ritual, now available in a limited-time skincare combo.</p>
-        <div className="pb-offer-price">
-          <span className="pb-sale-price">Rs.541</span>
-          <span className="pb-mrp">Rs.649</span>
+      {loading ? (
+        <OfferSkeleton />
+      ) : (
+        <div className="pb-text pb-offer">
+          <span className="eyebrow pb-eyebrow">
+            <Icon><path d="M12 2.5s7 7.5 7 12.5a7 7 0 11-14 0c0-5 7-12.5 7-12.5z" /></Icon>
+            {comboOffer?.label || "Combo Offer"}
+          </span>
+          <h2>{offerProduct?.name || "Neem Detox Serum with Vitamin C"}</h2>
+          <p>{comboOffer?.tagline || offerProduct?.description}</p>
+          <div className="pb-offer-price">
+            <span className="pb-sale-price">Rs.{comboOffer?.salePrice || offerProduct?.discountPrice}</span>
+            <span className="pb-mrp">Rs.{offerProduct?.price}</span>
+          </div>
+          <button className="pb-cta pb-cart" type="button">
+            Add to cart
+            <Icon><><circle cx="9" cy="21" r="1" /><circle cx="19" cy="21" r="1" /><path d="M2.5 3h2l2.7 12.4a2 2 0 002 1.6h8.6a2 2 0 002-1.6L21 7H6" /></></Icon>
+          </button>
         </div>
-        <button className="pb-cta pb-cart" type="button">
-          Add to cart
-          <Icon><><circle cx="9" cy="21" r="1" /><circle cx="19" cy="21" r="1" /><path d="M2.5 3h2l2.7 12.4a2 2 0 002 1.6h8.6a2 2 0 002-1.6L21 7H6" /></></Icon>
-        </button>
-      </div>
+      )}
+
       <div className="pb-media">
-                <span className="pb-offer-tag">15% Off</span>
-<img src="/img/PromiseBannerbg.jpeg" alt="Pulp Ayurveda herbal blend" />
+        <span className="pb-offer-tag">{comboOffer ? `${comboOffer.discountPercent}% Off` : "15% Off"}</span>
+        <img src={offerProduct?.image || comboOffer?.bannerImage || "/img/PromiseBannerbg.jpeg"} alt={offerProduct?.name || "Pulp Ayurveda herbal blend"} />
       </div>
+
       <div className="pb-features">
         {features.map((feature) => (
           <div className="pb-feature" key={feature.title}>
