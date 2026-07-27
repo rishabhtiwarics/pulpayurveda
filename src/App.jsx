@@ -1,11 +1,17 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { ProductProvider } from "./store/useProductStore.jsx";
+import { hydrateCart } from "./store/cartSlice";
 import Header from "./components/common/Header";
 import Footer from "./components/common/Footer";
 import HomePage from "./pages/HomePage";
 import ShopPage from "./pages/ShopPage";
+import CartPage from "./pages/CartPage";
+import CheckoutPage from "./pages/CheckoutPage";
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
+import ForgotPasswordPage from "./pages/ForgotPasswordPage";
 
-/** Minimal SPA router — no react-router-dom needed */
 function useRouter() {
   const [path, setPath] = useState(window.location.pathname);
   const [search, setSearch] = useState(window.location.search);
@@ -16,7 +22,6 @@ function useRouter() {
       setSearch(window.location.search);
     }
     window.addEventListener("popstate", onPop);
-    // Intercept pushState so back/forward works
     const origPush = window.history.pushState.bind(window.history);
     window.history.pushState = (...args) => {
       origPush(...args);
@@ -32,23 +37,33 @@ function useRouter() {
   return { path, search };
 }
 
-export default function App() {
-  const { path, search } = useRouter();
+function CurrentPage({ path, categoryParam }) {
+  if (path === "/shop") return <ShopPage initialCategory={categoryParam} />;
+  if (path === "/cart") return <CartPage />;
+  if (path === "/checkout") return <CheckoutPage />;
+  if (path === "/login") return <LoginPage />;
+  if (path === "/register") return <RegisterPage />;
+  if (path === "/forgot-password") return <ForgotPasswordPage />;
+  return <HomePage />;
+}
 
-  // Parse ?category= from URL for shop page
+export default function App() {
+  const dispatch = useDispatch();
+  const { path, search } = useRouter();
   const categoryParam = new URLSearchParams(search).get("category") || "all";
+  const authPath = ["/login", "/register", "/forgot-password"].includes(path);
+
+  useEffect(() => {
+    dispatch(hydrateCart());
+  }, [dispatch]);
 
   return (
     <ProductProvider>
-      <Header />
+      {!authPath && <Header />}
       <main style={{ display: "contents" }}>
-        {path === "/shop" ? (
-          <ShopPage initialCategory={categoryParam} />
-        ) : (
-          <HomePage />
-        )}
+        <CurrentPage path={path} categoryParam={categoryParam} />
       </main>
-      <Footer />
+      {!authPath && <Footer />}
     </ProductProvider>
   );
 }

@@ -1,7 +1,10 @@
 import { useEffect, useMemo, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useProducts } from "../../store/useProductStore.jsx";
 import ProductCard from "../shop/ProductCard";
 import ProductCardSkeleton from "../shop/ProductCardSkeleton";
+import CartSidebar from "../cart/CartSidebar";
+import { openCart, selectCartCount } from "../../store/cartSlice";
 
 const demoUser = {
   name: "Aarav Mehta",
@@ -286,6 +289,8 @@ function Sidebar({ open, onClose, loggedIn, setLoggedIn }) {
 }
 
 export default function Header() {
+  const dispatch = useDispatch();
+  const cartCount = useSelector(selectCartCount);
   const [searchOpen, setSearchOpen] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
@@ -385,6 +390,10 @@ export default function Header() {
             <button className="icon-btn search-toggle" id="searchToggle" aria-label="Search" aria-expanded={searchOpen} aria-controls="searchPanel" onMouseEnter={openSearchDropdown} onMouseLeave={scheduleSearchClose} onClick={() => { searchOpen ? closeSearchDropdown() : openSearchDropdown(); }}>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><circle cx="11" cy="11" r="7" /><line x1="21" y1="21" x2="16.5" y2="16.5" /></svg>
             </button>
+            <button className="icon-btn header-cart-btn" type="button" aria-label="Open cart" onClick={() => { dispatch(openCart()); setUserMenuOpen(false); setSearchOpen(false); setShopOpen(false); }}>
+              <CartIcon />
+              {cartCount > 0 && <span className="cart-count-badge">{cartCount}</span>}
+            </button>
             <div
               className="user-menu-wrap"
               id="userMenuWrap"
@@ -405,6 +414,7 @@ export default function Header() {
       </header>
       <SearchPanel open={searchOpen} onClose={closeSearchDropdown} inputRef={inputRef} panelRef={searchPanelRef} onMouseEnter={openSearchDropdown} onMouseLeave={scheduleSearchClose} />
       <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+      <CartSidebar />
     </>
   );
 }

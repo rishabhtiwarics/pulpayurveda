@@ -17,7 +17,7 @@ function TabIcon({ type }) {
   };
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      {icons[type] || icons["all"]}
+      {icons[type] || icons.all}
     </svg>
   );
 }
@@ -27,7 +27,6 @@ export default function ShopPage({ initialCategory }) {
   const [activeFilter, setActiveFilter] = useState(initialCategory || "all");
   const [search, setSearch] = useState("");
 
-  // Sync initial category from URL param if passed
   useEffect(() => {
     if (initialCategory) setActiveFilter(initialCategory);
   }, [initialCategory]);
@@ -47,100 +46,70 @@ export default function ShopPage({ initialCategory }) {
 
   function handleTabClick(tabId) {
     setActiveFilter(tabId);
-    // Update URL without react-router-dom
     const url = tabId === "all" ? "/shop" : `/shop?category=${tabId}`;
     window.history.pushState({}, "", url);
   }
 
   return (
-    <section className="fav-section shop-page-section">
-      <div className="fav-wrap">
-        {/* Page header */}
-        <div className="shop-page-head">
-          <div className="fav-intro-copy">
-            <span className="eyebrow fav-eyebrow">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
-                <line x1="3" y1="6" x2="21" y2="6" />
-                <path d="M16 10a4 4 0 01-8 0" />
+    <>
+      <section className="fav-section shop-page-section">
+        <div className="fav-wrap">
+          <div className="shop-page-head shop-page-controls">
+            <div className="fav-intro-copy">
+              <span className="eyebrow fav-eyebrow">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
+                  <line x1="3" y1="6" x2="21" y2="6" />
+                  <path d="M16 10a4 4 0 01-8 0" />
+                </svg>
+                Browse
+              </span>
+              <h2>Find your ritual</h2>
+            </div>
+
+            <div className="search-field-wrap shop-search-field" role="search">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                <circle cx="11" cy="11" r="7" /><line x1="21" y1="21" x2="16.5" y2="16.5" />
               </svg>
-              All Products
-            </span>
-            <h1>Shop Pulp Ayurveda</h1>
-            <p>Pure, handcrafted Ayurveda — browse our full range</p>
+              <input id="shopSearch" type="search" placeholder="Search herbs, blends, rituals..." autoComplete="off" value={search} onChange={(e) => setSearch(e.target.value)} />
+              {search && (
+                <button type="button" className="shop-clear-btn" aria-label="Clear search" onClick={() => setSearch("")}>&times;</button>
+              )}
+            </div>
           </div>
 
-          {/* Search bar — plain useState, no formik */}
-          <div className="search-field-wrap shop-search-field" role="search">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-              <circle cx="11" cy="11" r="7" /><line x1="21" y1="21" x2="16.5" y2="16.5" />
-            </svg>
-            <input
-              id="shopSearch"
-              type="search"
-              placeholder="Search herbs, blends, rituals..."
-              autoComplete="off"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-            />
-            {search && (
-              <button
-                type="button"
-                className="shop-clear-btn"
-                aria-label="Clear search"
-                onClick={() => setSearch("")}
-              >
-                &times;
-              </button>
+          <div className="fav-tabs" id="shopTabs">
+            {loading ? (
+              <ProductCardSkeleton variant="tab" count={9} />
+            ) : (
+              tabs.map((tab) => (
+                <button key={tab} className={`fav-tab${activeFilter === tab ? " active" : ""}`} type="button" onClick={() => handleTabClick(tab)}>
+                  <TabIcon type={tab} />
+                  {titleCase(tab)}
+                </button>
+              ))
+            )}
+          </div>
+
+          {!loading && (
+            <p className="shop-results-count">
+              {visibleProducts.length === 0 ? "No products found" : `${visibleProducts.length} product${visibleProducts.length !== 1 ? "s" : ""}`}
+              {search.trim() ? ` for "${search.trim()}"` : ""}
+              {activeFilter !== "all" ? ` in ${titleCase(activeFilter)}` : ""}
+            </p>
+          )}
+
+          <div className="fav-grid shop-full-grid" id="shopGrid">
+            {loading ? (
+              <ProductCardSkeleton variant="grid" count={8} />
+            ) : visibleProducts.length ? (
+              visibleProducts.map((product) => <ProductCard key={product.id} product={product} variant="grid" />)
+            ) : (
+              <div className="fav-empty show">No products found. Try a different search or category.</div>
             )}
           </div>
         </div>
-
-        {/* Category tabs */}
-        <div className="fav-tabs" id="shopTabs">
-          {loading ? (
-            <ProductCardSkeleton variant="tab" count={9} />
-          ) : (
-            tabs.map((tab) => (
-              <button
-                key={tab}
-                className={`fav-tab${activeFilter === tab ? " active" : ""}`}
-                type="button"
-                onClick={() => handleTabClick(tab)}
-              >
-                <TabIcon type={tab} />
-                {titleCase(tab)}
-              </button>
-            ))
-          )}
-        </div>
-
-        {/* Results count */}
-        {!loading && (
-          <p className="shop-results-count">
-            {visibleProducts.length === 0
-              ? "No products found"
-              : `${visibleProducts.length} product${visibleProducts.length !== 1 ? "s" : ""}`}
-            {search.trim() ? ` for "${search.trim()}"` : ""}
-            {activeFilter !== "all" ? ` in ${titleCase(activeFilter)}` : ""}
-          </p>
-        )}
-
-        {/* Product grid */}
-        <div className="fav-grid shop-full-grid" id="shopGrid">
-          {loading ? (
-            <ProductCardSkeleton variant="grid" count={8} />
-          ) : visibleProducts.length ? (
-            visibleProducts.map((product) => (
-              <ProductCard key={product.id} product={product} variant="grid" />
-            ))
-          ) : (
-            <div className="fav-empty show">
-              No products found. Try a different search or category.
-            </div>
-          )}
-        </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }
