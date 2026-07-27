@@ -22,6 +22,15 @@ function TabIcon({ type }) {
   );
 }
 
+function InnorHero() {
+  return (
+    <section className="innorhero" aria-label="Shop banner">
+      <div className="innorhero-frame">
+        <img src="/img/herobnner1.jpeg" alt="Pulp Ayurveda shop banner" loading="eager" />
+      </div>
+    </section>
+  );
+}
 export default function ShopPage({ initialCategory }) {
   const { products, categories, loading } = useProducts();
   const [activeFilter, setActiveFilter] = useState(initialCategory || "all");
@@ -52,7 +61,9 @@ export default function ShopPage({ initialCategory }) {
 
   return (
     <>
-      <section className="fav-section shop-page-section">
+      
+      <InnorHero />
+<section className="fav-section shop-page-section">
         <div className="fav-wrap">
           <div className="shop-page-head shop-page-controls">
             <div className="fav-intro-copy">

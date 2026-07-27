@@ -695,3 +695,9 @@
 @media(max-width:600px){.cart-sidebar{width:100vw;}.cart-sidebar-head{padding:18px 16px;}.cart-sidebar-main,.cart-sidebar-footer{padding:14px;}.cart-page-section,.checkout-section{padding:48px 0;}.cart-page-wrap,.checkout-wrap{padding:0 16px;}.cart-item-card.page-variant{grid-template-columns:82px minmax(0,1fr);}.cart-line-total{grid-column:2;justify-self:start;font-size:15px;}.checkout-steps{grid-template-columns:1fr;}.checkout-form.two-col{grid-template-columns:1fr;}.checkout-step-card,.cart-page-summary,.checkout-summary,.auth-card{padding:18px;}.auth-page{padding:24px 14px;}.auth-logo img{height:36px;}}
 @media(max-width:480px){.cart-page-section,.checkout-section{padding:36px 0;}.cart-item-card.sidebar-variant{grid-template-columns:70px minmax(0,1fr);}.cart-item-info h3{font-size:14px;}.cart-item-actions{align-items:flex-start;flex-direction:column;}.cart-qty{height:28px;}.cart-qty button{width:28px;height:28px;}.header-actions{gap:7px;}.cart-count-badge{top:-4px;right:-4px;}}
 
+
+/* Innor hero - shop page single image banner */
+.innorhero{position:relative;overflow:hidden;background:linear-gradient(180deg,rgba(0,0,0,.04) 0%,rgba(0,0,0,0) 45%,rgba(0,0,0,.08) 100%);padding:14px 0 18px;}
+.innorhero-frame{position:relative;width:100%;max-width:var(--maxw);margin:0 auto;overflow:hidden;border-radius:10px;padding:0 30px;box-sizing:border-box;}
+.innorhero-frame img{display:block;width:100%;height:auto;object-fit:contain!important;object-position:center;transform:none!important;margin:0 auto;}
+@media(max-width:768px){.innorhero{padding:0;}.innorhero-frame{padding:0;border-radius:0;}}
