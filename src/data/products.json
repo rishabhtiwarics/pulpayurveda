@@ -1,177 +1,754 @@
-{
-  "categories": [
-    { "id": "virvex",   "name": "Virvex",   "image": "/img/categories1.jpeg" },
-    { "id": "venora",   "name": "Venora",   "image": "/img/categories2.jpeg" },
-    { "id": "pressova", "name": "Pressova", "image": "/img/categories1.jpeg" },
-    { "id": "nestara",  "name": "Nestara",  "image": "/img/categories2.jpeg" },
-    { "id": "livera",   "name": "Livera",   "image": "/img/categories1.jpeg" },
-    { "id": "flexora",  "name": "Flexora",  "image": "/img/categories2.jpeg" },
-    { "id": "femiva",   "name": "Femiva",   "image": "/img/categories1.jpeg" },
-    { "id": "cardiva",  "name": "Cardiva",  "image": "/img/categories2.jpeg" }
-  ],
-  "products": [
-    {
-      "id": "p1",
-      "category": "virvex",
-      "name": "Neem Detox Serum with Vitamin C",
-      "price": 649,
-      "discountPrice": 541,
-      "image": "/img/PromiseBannerbg.jpeg",
-      "rating": 4.9,
-      "description": "Daily herbal support for a cleaner wellness ritual.",
-      "isBestseller": true,
-      "isComboOffer": true,
-      "tags": ["detox", "neem", "vitamin-c", "serum"]
-    },
-    {
-      "id": "p2",
-      "category": "venora",
-      "name": "Daily Glow Moisturizer with Saffron",
-      "price": 549,
-      "discountPrice": 449,
-      "image": "/img/product2.jpeg",
-      "rating": 4.8,
-      "description": "Soft, balanced care made for everyday glow.",
-      "isBestseller": true,
-      "isComboOffer": false,
-      "tags": ["glow", "moisturizer", "saffron"]
-    },
-    {
-      "id": "p3",
-      "category": "venora",
-      "name": "Night Repair Cream with Almond Oil",
-      "price": 599,
-      "discountPrice": 499,
-      "image": "/img/product1.jpeg",
-      "rating": 4.7,
-      "description": "Nourishing night ritual with a smooth finish.",
-      "isBestseller": false,
-      "isComboOffer": false,
-      "tags": ["night", "repair", "almond", "cream"]
-    },
-    {
-      "id": "p4",
-      "category": "pressova",
-      "name": "Gentle Herbal Cleanser with Aloe Vera",
-      "price": 449,
-      "discountPrice": 369,
-      "image": "/img/product2.jpeg",
-      "rating": 4.9,
-      "description": "Gentle plant care for a fresh daily cleanse.",
-      "isBestseller": true,
-      "isComboOffer": false,
-      "tags": ["cleanser", "aloe", "herbal", "gentle"]
-    },
-    {
-      "id": "p5",
-      "category": "nestara",
-      "name": "Detox Clay Mask with Multani Mitti",
-      "price": 499,
-      "discountPrice": 399,
-      "image": "/img/product1.jpeg",
-      "rating": 4.8,
-      "description": "A weekly reset for calm, polished skin.",
-      "isBestseller": false,
-      "isComboOffer": false,
-      "tags": ["mask", "clay", "detox", "multani"]
-    },
-    {
-      "id": "p6",
-      "category": "livera",
-      "name": "Sun Shield SPF 50+ with Turmeric",
-      "price": 399,
-      "discountPrice": 329,
-      "image": "/img/product2.jpeg",
-      "rating": 4.6,
-      "description": "Lightweight protection with a herbal touch.",
-      "isBestseller": false,
-      "isComboOffer": false,
-      "tags": ["sunscreen", "spf", "turmeric", "protection"]
-    },
-    {
-      "id": "p7",
-      "category": "livera",
-      "name": "Under Eye Cream with Cucumber",
-      "price": 449,
-      "discountPrice": 369,
-      "image": "/img/product1.jpeg",
-      "rating": 4.7,
-      "description": "Cooling care for tired-looking under eyes.",
-      "isBestseller": false,
-      "isComboOffer": false,
-      "tags": ["eye", "cream", "cucumber", "cooling"]
-    },
-    {
-      "id": "p8",
-      "category": "flexora",
-      "name": "Hair Growth Oil with Bhringraj",
-      "price": 599,
-      "discountPrice": 499,
-      "image": "/img/product2.jpeg",
-      "rating": 4.8,
-      "description": "Root-focused oil for a mindful hair ritual.",
-      "isBestseller": true,
-      "isComboOffer": false,
-      "tags": ["hair", "oil", "bhringraj", "growth"]
-    },
-    {
-      "id": "p9",
-      "category": "femiva",
-      "name": "Body Lotion with Shea Butter",
-      "price": 449,
-      "discountPrice": 369,
-      "image": "/img/product1.jpeg",
-      "rating": 4.9,
-      "description": "Comforting body care with lasting softness.",
-      "isBestseller": true,
-      "isComboOffer": false,
-      "tags": ["lotion", "shea", "body", "moisturizer"]
-    },
-    {
-      "id": "p10",
-      "category": "cardiva",
-      "name": "Ayurvedic Immunity Tonic",
-      "price": 699,
-      "discountPrice": 579,
-      "image": "/img/product2.jpeg",
-      "rating": 4.8,
-      "description": "A thoughtful tonic for everyday resilience.",
-      "isBestseller": false,
-      "isComboOffer": false,
-      "tags": ["immunity", "tonic", "ayurvedic", "wellness"]
-    },
-    {
-      "id": "p11",
-      "category": "virvex",
-      "name": "Tulsi Glow Face Wash",
-      "price": 349,
-      "discountPrice": 279,
-      "image": "/img/product2.jpeg",
-      "rating": 4.6,
-      "description": "Sacred herb cleanser for radiant mornings.",
-      "isBestseller": false,
-      "isComboOffer": false,
-      "tags": ["tulsi", "facewash", "glow", "cleanser"]
-    },
-    {
-      "id": "p12",
-      "category": "pressova",
-      "name": "Rose Hip Toner Mist",
-      "price": 379,
-      "discountPrice": 299,
-      "image": "/img/product1.jpeg",
-      "rating": 4.5,
-      "description": "Light mist for pore-tightening hydration.",
-      "isBestseller": false,
-      "isComboOffer": false,
-      "tags": ["toner", "rose", "mist", "hydration"]
-    }
-  ],
-  "comboOffer": {
-    "productId": "p1",
-    "discountPercent": 15,
-    "salePrice": 541,
-    "label": "Combo Offer",
-    "tagline": "Daily herbal support for a cleaner wellness ritual, now available in a limited-time skincare combo."
-  }
+﻿{
+    "categories":  [
+                       {
+                           "id":  "virvex",
+                           "name":  "Virvex",
+                           "image":  "/img/categories1.jpeg"
+                       },
+                       {
+                           "id":  "venora",
+                           "name":  "Venora",
+                           "image":  "/img/categories2.jpeg"
+                       },
+                       {
+                           "id":  "pressova",
+                           "name":  "Pressova",
+                           "image":  "/img/categories1.jpeg"
+                       },
+                       {
+                           "id":  "nestara",
+                           "name":  "Nestara",
+                           "image":  "/img/categories2.jpeg"
+                       },
+                       {
+                           "id":  "livera",
+                           "name":  "Livera",
+                           "image":  "/img/categories1.jpeg"
+                       },
+                       {
+                           "id":  "flexora",
+                           "name":  "Flexora",
+                           "image":  "/img/categories2.jpeg"
+                       },
+                       {
+                           "id":  "femiva",
+                           "name":  "Femiva",
+                           "image":  "/img/categories1.jpeg"
+                       },
+                       {
+                           "id":  "cardiva",
+                           "name":  "Cardiva",
+                           "image":  "/img/categories2.jpeg"
+                       }
+                   ],
+    "products":  [
+                     {
+                         "id":  "p1",
+                         "category":  "virvex",
+                         "name":  "Neem Detox Serum with Vitamin C",
+                         "price":  649,
+                         "discountPrice":  541,
+                         "image":  "/img/PromiseBannerbg.jpeg",
+                         "rating":  4.9,
+                         "description":  "Daily herbal support for a cleaner wellness ritual.",
+                         "isBestseller":  true,
+                         "isComboOffer":  true,
+                         "tags":  [
+                                      "detox",
+                                      "neem",
+                                      "vitamin-c",
+                                      "serum"
+                                  ],
+                         "images":  [
+                                        "/img/PromiseBannerbg.jpeg"
+                                    ],
+                         "shortDescription":  "Daily herbal support for a cleaner wellness ritual.",
+                         "longDescription":  "Daily herbal support for a cleaner wellness ritual. Crafted for a daily Ayurveda-inspired routine, this blend is designed to feel gentle, balanced, and easy to use while supporting a cleaner wellness ritual from morning to night.",
+                         "bottleSize":  "60 capsules",
+                         "highResImages":  [
+                                               "/img/PromiseBannerbg.jpeg"
+                                           ],
+                         "detailBadges":  [
+                                              "DETOX",
+                                              "NEEM",
+                                              "VITAMIN C"
+                                          ],
+                         "detailCategory":  "VIRVEX RITUAL",
+                         "reviewCount":  201,
+                         "detailMeta":  "AYURVEDIC BLEND + DAILY ROUTINE + MADE IN INDIA",
+                         "stockText":  "In stock and ready to dispatch",
+                         "dispatchText":  "1-2 business days dispatch · COD available",
+                         "subscriptionPrice":  460,
+                         "benefits":  [
+                                          "Daily herbal support",
+                                          "Balanced wellness ritual",
+                                          "Clean-feeling routine",
+                                          "Mindful Ayurveda care"
+                                      ],
+                         "activeIngredients":  [
+                                                   "detox",
+                                                   "neem",
+                                                   "vitamin c",
+                                                   "serum"
+                                               ],
+                         "howToUse":  [
+                                          "Use as part of your daily routine.",
+                                          "Follow the label directions for best results.",
+                                          "Store in a cool and dry place."
+                                      ]
+                     },
+                     {
+                         "id":  "p2",
+                         "category":  "venora",
+                         "name":  "Daily Glow Moisturizer with Saffron",
+                         "price":  549,
+                         "discountPrice":  449,
+                         "image":  "/img/product2.jpeg",
+                         "rating":  4.8,
+                         "description":  "Soft, balanced care made for everyday glow.",
+                         "isBestseller":  true,
+                         "isComboOffer":  false,
+                         "tags":  [
+                                      "glow",
+                                      "moisturizer",
+                                      "saffron"
+                                  ],
+                         "images":  [
+                                        "/img/product2.jpeg",
+                                        "/img/categories2.jpeg"
+                                    ],
+                         "shortDescription":  "Soft, balanced care made for everyday glow.",
+                         "longDescription":  "Soft, balanced care made for everyday glow. Crafted for a daily Ayurveda-inspired routine, this blend is designed to feel gentle, balanced, and easy to use while supporting a cleaner wellness ritual from morning to night.",
+                         "bottleSize":  "60 capsules",
+                         "highResImages":  [
+                                               "/img/product2.jpeg",
+                                               "/img/categories2.jpeg"
+                                           ],
+                         "detailBadges":  [
+                                              "GLOW",
+                                              "MOISTURIZER",
+                                              "SAFFRON"
+                                          ],
+                         "detailCategory":  "VENORA RITUAL",
+                         "reviewCount":  222,
+                         "detailMeta":  "AYURVEDIC BLEND + DAILY ROUTINE + MADE IN INDIA",
+                         "stockText":  "In stock and ready to dispatch",
+                         "dispatchText":  "1-2 business days dispatch · COD available",
+                         "subscriptionPrice":  382,
+                         "benefits":  [
+                                          "Daily herbal support",
+                                          "Balanced wellness ritual",
+                                          "Clean-feeling routine",
+                                          "Mindful Ayurveda care"
+                                      ],
+                         "activeIngredients":  [
+                                                   "glow",
+                                                   "moisturizer",
+                                                   "saffron",
+                                                   "Ayurvedic botanicals"
+                                               ],
+                         "howToUse":  [
+                                          "Use as part of your daily routine.",
+                                          "Follow the label directions for best results.",
+                                          "Store in a cool and dry place."
+                                      ]
+                     },
+                     {
+                         "id":  "p3",
+                         "category":  "venora",
+                         "name":  "Night Repair Cream with Almond Oil",
+                         "price":  599,
+                         "discountPrice":  499,
+                         "image":  "/img/product1.jpeg",
+                         "rating":  4.7,
+                         "description":  "Nourishing night ritual with a smooth finish.",
+                         "isBestseller":  false,
+                         "isComboOffer":  false,
+                         "tags":  [
+                                      "night",
+                                      "repair",
+                                      "almond",
+                                      "cream"
+                                  ],
+                         "images":  [
+                                        "/img/product1.jpeg",
+                                        "/img/categories1.jpeg",
+                                        "/img/PromiseBannerbg.jpeg"
+                                    ],
+                         "shortDescription":  "Nourishing night ritual with a smooth finish.",
+                         "longDescription":  "Nourishing night ritual with a smooth finish. Crafted for a daily Ayurveda-inspired routine, this blend is designed to feel gentle, balanced, and easy to use while supporting a cleaner wellness ritual from morning to night.",
+                         "bottleSize":  "60 capsules",
+                         "highResImages":  [
+                                               "/img/product1.jpeg",
+                                               "/img/categories1.jpeg",
+                                               "/img/PromiseBannerbg.jpeg"
+                                           ],
+                         "detailBadges":  [
+                                              "NIGHT",
+                                              "REPAIR",
+                                              "ALMOND"
+                                          ],
+                         "detailCategory":  "VENORA RITUAL",
+                         "reviewCount":  243,
+                         "detailMeta":  "AYURVEDIC BLEND + DAILY ROUTINE + MADE IN INDIA",
+                         "stockText":  "In stock and ready to dispatch",
+                         "dispatchText":  "1-2 business days dispatch · COD available",
+                         "subscriptionPrice":  424,
+                         "benefits":  [
+                                          "Daily herbal support",
+                                          "Balanced wellness ritual",
+                                          "Clean-feeling routine",
+                                          "Mindful Ayurveda care"
+                                      ],
+                         "activeIngredients":  [
+                                                   "night",
+                                                   "repair",
+                                                   "almond",
+                                                   "cream"
+                                               ],
+                         "howToUse":  [
+                                          "Use as part of your daily routine.",
+                                          "Follow the label directions for best results.",
+                                          "Store in a cool and dry place."
+                                      ]
+                     },
+                     {
+                         "id":  "p4",
+                         "category":  "pressova",
+                         "name":  "Gentle Herbal Cleanser with Aloe Vera",
+                         "price":  449,
+                         "discountPrice":  369,
+                         "image":  "/img/product2.jpeg",
+                         "rating":  4.9,
+                         "description":  "Gentle plant care for a fresh daily cleanse.",
+                         "isBestseller":  true,
+                         "isComboOffer":  false,
+                         "tags":  [
+                                      "cleanser",
+                                      "aloe",
+                                      "herbal",
+                                      "gentle"
+                                  ],
+                         "images":  [
+                                        "/img/product2.jpeg",
+                                        "/img/categories1.jpeg",
+                                        "/img/categories3.jpeg",
+                                        "/img/PromiseBannerbg.jpeg"
+                                    ],
+                         "shortDescription":  "Gentle plant care for a fresh daily cleanse.",
+                         "longDescription":  "Gentle plant care for a fresh daily cleanse. Crafted for a daily Ayurveda-inspired routine, this blend is designed to feel gentle, balanced, and easy to use while supporting a cleaner wellness ritual from morning to night.",
+                         "bottleSize":  "60 capsules",
+                         "highResImages":  [
+                                               "/img/product2.jpeg",
+                                               "/img/categories1.jpeg",
+                                               "/img/categories3.jpeg",
+                                               "/img/PromiseBannerbg.jpeg"
+                                           ],
+                         "detailBadges":  [
+                                              "CLEANSER",
+                                              "ALOE",
+                                              "HERBAL"
+                                          ],
+                         "detailCategory":  "PRESSOVA RITUAL",
+                         "reviewCount":  264,
+                         "detailMeta":  "AYURVEDIC BLEND + DAILY ROUTINE + MADE IN INDIA",
+                         "stockText":  "In stock and ready to dispatch",
+                         "dispatchText":  "1-2 business days dispatch · COD available",
+                         "subscriptionPrice":  314,
+                         "benefits":  [
+                                          "Daily herbal support",
+                                          "Balanced wellness ritual",
+                                          "Clean-feeling routine",
+                                          "Mindful Ayurveda care"
+                                      ],
+                         "activeIngredients":  [
+                                                   "cleanser",
+                                                   "aloe",
+                                                   "herbal",
+                                                   "gentle"
+                                               ],
+                         "howToUse":  [
+                                          "Use as part of your daily routine.",
+                                          "Follow the label directions for best results.",
+                                          "Store in a cool and dry place."
+                                      ]
+                     },
+                     {
+                         "id":  "p5",
+                         "category":  "nestara",
+                         "name":  "Detox Clay Mask with Multani Mitti",
+                         "price":  499,
+                         "discountPrice":  399,
+                         "image":  "/img/product1.jpeg",
+                         "rating":  4.8,
+                         "description":  "A weekly reset for calm, polished skin.",
+                         "isBestseller":  false,
+                         "isComboOffer":  false,
+                         "tags":  [
+                                      "mask",
+                                      "clay",
+                                      "detox",
+                                      "multani"
+                                  ],
+                         "images":  [
+                                        "/img/product1.jpeg",
+                                        "/img/product2.jpeg",
+                                        "/img/categories1.jpeg",
+                                        "/img/categories2.jpeg",
+                                        "/img/categories3.jpeg"
+                                    ],
+                         "shortDescription":  "A weekly reset for calm, polished skin.",
+                         "longDescription":  "A weekly reset for calm, polished skin. Crafted for a daily Ayurveda-inspired routine, this blend is designed to feel gentle, balanced, and easy to use while supporting a cleaner wellness ritual from morning to night.",
+                         "bottleSize":  "60 capsules",
+                         "highResImages":  [
+                                               "/img/product1.jpeg",
+                                               "/img/product2.jpeg",
+                                               "/img/categories1.jpeg",
+                                               "/img/categories2.jpeg",
+                                               "/img/categories3.jpeg"
+                                           ],
+                         "detailBadges":  [
+                                              "MASK",
+                                              "CLAY",
+                                              "DETOX"
+                                          ],
+                         "detailCategory":  "NESTARA RITUAL",
+                         "reviewCount":  285,
+                         "detailMeta":  "AYURVEDIC BLEND + DAILY ROUTINE + MADE IN INDIA",
+                         "stockText":  "In stock and ready to dispatch",
+                         "dispatchText":  "1-2 business days dispatch · COD available",
+                         "subscriptionPrice":  339,
+                         "benefits":  [
+                                          "Daily herbal support",
+                                          "Balanced wellness ritual",
+                                          "Clean-feeling routine",
+                                          "Mindful Ayurveda care"
+                                      ],
+                         "activeIngredients":  [
+                                                   "mask",
+                                                   "clay",
+                                                   "detox",
+                                                   "multani"
+                                               ],
+                         "howToUse":  [
+                                          "Use as part of your daily routine.",
+                                          "Follow the label directions for best results.",
+                                          "Store in a cool and dry place."
+                                      ]
+                     },
+                     {
+                         "id":  "p6",
+                         "category":  "livera",
+                         "name":  "Sun Shield SPF 50+ with Turmeric",
+                         "price":  399,
+                         "discountPrice":  329,
+                         "image":  "/img/product2.jpeg",
+                         "rating":  4.6,
+                         "description":  "Lightweight protection with a herbal touch.",
+                         "isBestseller":  false,
+                         "isComboOffer":  false,
+                         "tags":  [
+                                      "sunscreen",
+                                      "spf",
+                                      "turmeric",
+                                      "protection"
+                                  ],
+                         "images":  [
+                                        "/img/PromiseBannerbg.jpeg"
+                                    ],
+                         "shortDescription":  "Lightweight protection with a herbal touch.",
+                         "longDescription":  "Lightweight protection with a herbal touch. Crafted for a daily Ayurveda-inspired routine, this blend is designed to feel gentle, balanced, and easy to use while supporting a cleaner wellness ritual from morning to night.",
+                         "bottleSize":  "60 capsules",
+                         "highResImages":  [
+                                               "/img/PromiseBannerbg.jpeg"
+                                           ],
+                         "detailBadges":  [
+                                              "SUNSCREEN",
+                                              "SPF",
+                                              "TURMERIC"
+                                          ],
+                         "detailCategory":  "LIVERA RITUAL",
+                         "reviewCount":  306,
+                         "detailMeta":  "AYURVEDIC BLEND + DAILY ROUTINE + MADE IN INDIA",
+                         "stockText":  "In stock and ready to dispatch",
+                         "dispatchText":  "1-2 business days dispatch · COD available",
+                         "subscriptionPrice":  280,
+                         "benefits":  [
+                                          "Daily herbal support",
+                                          "Balanced wellness ritual",
+                                          "Clean-feeling routine",
+                                          "Mindful Ayurveda care"
+                                      ],
+                         "activeIngredients":  [
+                                                   "sunscreen",
+                                                   "spf",
+                                                   "turmeric",
+                                                   "protection"
+                                               ],
+                         "howToUse":  [
+                                          "Use as part of your daily routine.",
+                                          "Follow the label directions for best results.",
+                                          "Store in a cool and dry place."
+                                      ]
+                     },
+                     {
+                         "id":  "p7",
+                         "category":  "livera",
+                         "name":  "Under Eye Cream with Cucumber",
+                         "price":  449,
+                         "discountPrice":  369,
+                         "image":  "/img/product1.jpeg",
+                         "rating":  4.7,
+                         "description":  "Cooling care for tired-looking under eyes.",
+                         "isBestseller":  false,
+                         "isComboOffer":  false,
+                         "tags":  [
+                                      "eye",
+                                      "cream",
+                                      "cucumber",
+                                      "cooling"
+                                  ],
+                         "images":  [
+                                        "/img/product2.jpeg",
+                                        "/img/categories2.jpeg"
+                                    ],
+                         "shortDescription":  "Cooling care for tired-looking under eyes.",
+                         "longDescription":  "Cooling care for tired-looking under eyes. Crafted for a daily Ayurveda-inspired routine, this blend is designed to feel gentle, balanced, and easy to use while supporting a cleaner wellness ritual from morning to night.",
+                         "bottleSize":  "60 capsules",
+                         "highResImages":  [
+                                               "/img/product2.jpeg",
+                                               "/img/categories2.jpeg"
+                                           ],
+                         "detailBadges":  [
+                                              "EYE",
+                                              "CREAM",
+                                              "CUCUMBER"
+                                          ],
+                         "detailCategory":  "LIVERA RITUAL",
+                         "reviewCount":  327,
+                         "detailMeta":  "AYURVEDIC BLEND + DAILY ROUTINE + MADE IN INDIA",
+                         "stockText":  "In stock and ready to dispatch",
+                         "dispatchText":  "1-2 business days dispatch · COD available",
+                         "subscriptionPrice":  314,
+                         "benefits":  [
+                                          "Daily herbal support",
+                                          "Balanced wellness ritual",
+                                          "Clean-feeling routine",
+                                          "Mindful Ayurveda care"
+                                      ],
+                         "activeIngredients":  [
+                                                   "eye",
+                                                   "cream",
+                                                   "cucumber",
+                                                   "cooling"
+                                               ],
+                         "howToUse":  [
+                                          "Use as part of your daily routine.",
+                                          "Follow the label directions for best results.",
+                                          "Store in a cool and dry place."
+                                      ]
+                     },
+                     {
+                         "id":  "p8",
+                         "category":  "flexora",
+                         "name":  "Hair Growth Oil with Bhringraj",
+                         "price":  599,
+                         "discountPrice":  499,
+                         "image":  "/img/product2.jpeg",
+                         "rating":  4.8,
+                         "description":  "Root-focused oil for a mindful hair ritual.",
+                         "isBestseller":  true,
+                         "isComboOffer":  false,
+                         "tags":  [
+                                      "hair",
+                                      "oil",
+                                      "bhringraj",
+                                      "growth"
+                                  ],
+                         "images":  [
+                                        "/img/product1.jpeg",
+                                        "/img/categories1.jpeg",
+                                        "/img/PromiseBannerbg.jpeg"
+                                    ],
+                         "shortDescription":  "Root-focused oil for a mindful hair ritual.",
+                         "longDescription":  "Root-focused oil for a mindful hair ritual. Crafted for a daily Ayurveda-inspired routine, this blend is designed to feel gentle, balanced, and easy to use while supporting a cleaner wellness ritual from morning to night.",
+                         "bottleSize":  "60 capsules",
+                         "highResImages":  [
+                                               "/img/product1.jpeg",
+                                               "/img/categories1.jpeg",
+                                               "/img/PromiseBannerbg.jpeg"
+                                           ],
+                         "detailBadges":  [
+                                              "HAIR",
+                                              "OIL",
+                                              "BHRINGRAJ"
+                                          ],
+                         "detailCategory":  "FLEXORA RITUAL",
+                         "reviewCount":  348,
+                         "detailMeta":  "AYURVEDIC BLEND + DAILY ROUTINE + MADE IN INDIA",
+                         "stockText":  "In stock and ready to dispatch",
+                         "dispatchText":  "1-2 business days dispatch · COD available",
+                         "subscriptionPrice":  424,
+                         "benefits":  [
+                                          "Daily herbal support",
+                                          "Balanced wellness ritual",
+                                          "Clean-feeling routine",
+                                          "Mindful Ayurveda care"
+                                      ],
+                         "activeIngredients":  [
+                                                   "hair",
+                                                   "oil",
+                                                   "bhringraj",
+                                                   "growth"
+                                               ],
+                         "howToUse":  [
+                                          "Use as part of your daily routine.",
+                                          "Follow the label directions for best results.",
+                                          "Store in a cool and dry place."
+                                      ]
+                     },
+                     {
+                         "id":  "p9",
+                         "category":  "femiva",
+                         "name":  "Body Lotion with Shea Butter",
+                         "price":  449,
+                         "discountPrice":  369,
+                         "image":  "/img/product1.jpeg",
+                         "rating":  4.9,
+                         "description":  "Comforting body care with lasting softness.",
+                         "isBestseller":  true,
+                         "isComboOffer":  false,
+                         "tags":  [
+                                      "lotion",
+                                      "shea",
+                                      "body",
+                                      "moisturizer"
+                                  ],
+                         "images":  [
+                                        "/img/product2.jpeg",
+                                        "/img/categories1.jpeg",
+                                        "/img/categories3.jpeg",
+                                        "/img/PromiseBannerbg.jpeg"
+                                    ],
+                         "shortDescription":  "Comforting body care with lasting softness.",
+                         "longDescription":  "Comforting body care with lasting softness. Crafted for a daily Ayurveda-inspired routine, this blend is designed to feel gentle, balanced, and easy to use while supporting a cleaner wellness ritual from morning to night.",
+                         "bottleSize":  "60 capsules",
+                         "highResImages":  [
+                                               "/img/product2.jpeg",
+                                               "/img/categories1.jpeg",
+                                               "/img/categories3.jpeg",
+                                               "/img/PromiseBannerbg.jpeg"
+                                           ],
+                         "detailBadges":  [
+                                              "LOTION",
+                                              "SHEA",
+                                              "BODY"
+                                          ],
+                         "detailCategory":  "FEMIVA RITUAL",
+                         "reviewCount":  369,
+                         "detailMeta":  "AYURVEDIC BLEND + DAILY ROUTINE + MADE IN INDIA",
+                         "stockText":  "In stock and ready to dispatch",
+                         "dispatchText":  "1-2 business days dispatch · COD available",
+                         "subscriptionPrice":  314,
+                         "benefits":  [
+                                          "Daily herbal support",
+                                          "Balanced wellness ritual",
+                                          "Clean-feeling routine",
+                                          "Mindful Ayurveda care"
+                                      ],
+                         "activeIngredients":  [
+                                                   "lotion",
+                                                   "shea",
+                                                   "body",
+                                                   "moisturizer"
+                                               ],
+                         "howToUse":  [
+                                          "Use as part of your daily routine.",
+                                          "Follow the label directions for best results.",
+                                          "Store in a cool and dry place."
+                                      ]
+                     },
+                     {
+                         "id":  "p10",
+                         "category":  "cardiva",
+                         "name":  "Ayurvedic Immunity Tonic",
+                         "price":  699,
+                         "discountPrice":  579,
+                         "image":  "/img/product2.jpeg",
+                         "rating":  4.8,
+                         "description":  "A thoughtful tonic for everyday resilience.",
+                         "isBestseller":  false,
+                         "isComboOffer":  false,
+                         "tags":  [
+                                      "immunity",
+                                      "tonic",
+                                      "ayurvedic",
+                                      "wellness"
+                                  ],
+                         "images":  [
+                                        "/img/product1.jpeg",
+                                        "/img/product2.jpeg",
+                                        "/img/categories1.jpeg",
+                                        "/img/categories2.jpeg",
+                                        "/img/categories3.jpeg"
+                                    ],
+                         "shortDescription":  "A thoughtful tonic for everyday resilience.",
+                         "longDescription":  "A thoughtful tonic for everyday resilience. Crafted for a daily Ayurveda-inspired routine, this blend is designed to feel gentle, balanced, and easy to use while supporting a cleaner wellness ritual from morning to night.",
+                         "bottleSize":  "60 capsules",
+                         "highResImages":  [
+                                               "/img/product1.jpeg",
+                                               "/img/product2.jpeg",
+                                               "/img/categories1.jpeg",
+                                               "/img/categories2.jpeg",
+                                               "/img/categories3.jpeg"
+                                           ],
+                         "detailBadges":  [
+                                              "IMMUNITY",
+                                              "TONIC",
+                                              "AYURVEDIC"
+                                          ],
+                         "detailCategory":  "CARDIVA RITUAL",
+                         "reviewCount":  390,
+                         "detailMeta":  "AYURVEDIC BLEND + DAILY ROUTINE + MADE IN INDIA",
+                         "stockText":  "In stock and ready to dispatch",
+                         "dispatchText":  "1-2 business days dispatch · COD available",
+                         "subscriptionPrice":  492,
+                         "benefits":  [
+                                          "Daily herbal support",
+                                          "Balanced wellness ritual",
+                                          "Clean-feeling routine",
+                                          "Mindful Ayurveda care"
+                                      ],
+                         "activeIngredients":  [
+                                                   "immunity",
+                                                   "tonic",
+                                                   "ayurvedic",
+                                                   "wellness"
+                                               ],
+                         "howToUse":  [
+                                          "Use as part of your daily routine.",
+                                          "Follow the label directions for best results.",
+                                          "Store in a cool and dry place."
+                                      ]
+                     },
+                     {
+                         "id":  "p11",
+                         "category":  "virvex",
+                         "name":  "Tulsi Glow Face Wash",
+                         "price":  349,
+                         "discountPrice":  279,
+                         "image":  "/img/product2.jpeg",
+                         "rating":  4.6,
+                         "description":  "Sacred herb cleanser for radiant mornings.",
+                         "isBestseller":  false,
+                         "isComboOffer":  false,
+                         "tags":  [
+                                      "tulsi",
+                                      "facewash",
+                                      "glow",
+                                      "cleanser"
+                                  ],
+                         "images":  [
+                                        "/img/PromiseBannerbg.jpeg"
+                                    ],
+                         "shortDescription":  "Sacred herb cleanser for radiant mornings.",
+                         "longDescription":  "Sacred herb cleanser for radiant mornings. Crafted for a daily Ayurveda-inspired routine, this blend is designed to feel gentle, balanced, and easy to use while supporting a cleaner wellness ritual from morning to night.",
+                         "bottleSize":  "60 capsules",
+                         "highResImages":  [
+                                               "/img/PromiseBannerbg.jpeg"
+                                           ],
+                         "detailBadges":  [
+                                              "TULSI",
+                                              "FACEWASH",
+                                              "GLOW"
+                                          ],
+                         "detailCategory":  "VIRVEX RITUAL",
+                         "reviewCount":  411,
+                         "detailMeta":  "AYURVEDIC BLEND + DAILY ROUTINE + MADE IN INDIA",
+                         "stockText":  "In stock and ready to dispatch",
+                         "dispatchText":  "1-2 business days dispatch · COD available",
+                         "subscriptionPrice":  237,
+                         "benefits":  [
+                                          "Daily herbal support",
+                                          "Balanced wellness ritual",
+                                          "Clean-feeling routine",
+                                          "Mindful Ayurveda care"
+                                      ],
+                         "activeIngredients":  [
+                                                   "tulsi",
+                                                   "facewash",
+                                                   "glow",
+                                                   "cleanser"
+                                               ],
+                         "howToUse":  [
+                                          "Use as part of your daily routine.",
+                                          "Follow the label directions for best results.",
+                                          "Store in a cool and dry place."
+                                      ]
+                     },
+                     {
+                         "id":  "p12",
+                         "category":  "pressova",
+                         "name":  "Rose Hip Toner Mist",
+                         "price":  379,
+                         "discountPrice":  299,
+                         "image":  "/img/product1.jpeg",
+                         "rating":  4.5,
+                         "description":  "Light mist for pore-tightening hydration.",
+                         "isBestseller":  false,
+                         "isComboOffer":  false,
+                         "tags":  [
+                                      "toner",
+                                      "rose",
+                                      "mist",
+                                      "hydration"
+                                  ],
+                         "images":  [
+                                        "/img/product2.jpeg",
+                                        "/img/categories2.jpeg"
+                                    ],
+                         "shortDescription":  "Light mist for pore-tightening hydration.",
+                         "longDescription":  "Light mist for pore-tightening hydration. Crafted for a daily Ayurveda-inspired routine, this blend is designed to feel gentle, balanced, and easy to use while supporting a cleaner wellness ritual from morning to night.",
+                         "bottleSize":  "60 capsules",
+                         "highResImages":  [
+                                               "/img/product2.jpeg",
+                                               "/img/categories2.jpeg"
+                                           ],
+                         "detailBadges":  [
+                                              "TONER",
+                                              "ROSE",
+                                              "MIST"
+                                          ],
+                         "detailCategory":  "PRESSOVA RITUAL",
+                         "reviewCount":  432,
+                         "detailMeta":  "AYURVEDIC BLEND + DAILY ROUTINE + MADE IN INDIA",
+                         "stockText":  "In stock and ready to dispatch",
+                         "dispatchText":  "1-2 business days dispatch · COD available",
+                         "subscriptionPrice":  254,
+                         "benefits":  [
+                                          "Daily herbal support",
+                                          "Balanced wellness ritual",
+                                          "Clean-feeling routine",
+                                          "Mindful Ayurveda care"
+                                      ],
+                         "activeIngredients":  [
+                                                   "toner",
+                                                   "rose",
+                                                   "mist",
+                                                   "hydration"
+                                               ],
+                         "howToUse":  [
+                                          "Use as part of your daily routine.",
+                                          "Follow the label directions for best results.",
+                                          "Store in a cool and dry place."
+                                      ]
+                     }
+                 ],
+    "comboOffer":  {
+                       "productId":  "p1",
+                       "discountPercent":  15,
+                       "salePrice":  541,
+                       "label":  "Combo Offer",
+                       "tagline":  "Daily herbal support for a cleaner wellness ritual, now available in a limited-time skincare combo."
+                   }
 }

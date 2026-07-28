@@ -28,11 +28,17 @@ export function titleCase(value) {
   return value === "all" ? "All" : value.charAt(0).toUpperCase() + value.slice(1);
 }
 
+function openProductDetails(product) {
+  window.history.pushState({}, "", `/product/${product.id}`);
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
 function useCartButton(product, onAddToCart) {
   const dispatch = useDispatch();
   const inCart = useSelector(selectIsInCart(product.id));
 
-  function handleAdd() {
+  function handleAdd(event) {
+    event?.stopPropagation();
     if (inCart) return;
     dispatch(addToCart(product));
     dispatch(openCart());
@@ -45,10 +51,11 @@ function useCartButton(product, onAddToCart) {
 function GridCard({ product, onAddToCart }) {
   const { inCart, handleAdd } = useCartButton(product, onAddToCart);
   return (
-    <article className="fav-card" data-category={product.category} key={`grid-${product.id}`}>
+    <article className="fav-card product-click-card" data-category={product.category} key={`grid-${product.id}`} role="link" tabIndex="0" onClick={() => openProductDetails(product)} onKeyDown={(event) => { if (event.key === "Enter") openProductDetails(product); }}>
       <div className="fav-img"><img src={product.image} alt={product.name} loading="lazy" /></div>
       <p className="fav-cat-tag">{titleCase(product.category)}</p>
       <h3 className="fav-name">{product.name}</h3>
+      <p className="fav-desc">{product.shortDescription || product.description}</p>
       <div className="fav-rating"><RatingStars value={product.rating} /><strong>({product.rating})</strong></div>
       <div className="fav-bottom">
         <span className="fav-price">Rs.{product.discountPrice}</span>
@@ -64,7 +71,7 @@ function GridCard({ product, onAddToCart }) {
 function SearchCard({ product, onAddToCart }) {
   const { inCart, handleAdd } = useCartButton(product, onAddToCart);
   return (
-    <div className="search-product-card" key={`search-${product.id}`}>
+    <div className="search-product-card" key={`search-${product.id}`} role="link" tabIndex="0" onClick={() => openProductDetails(product)} onKeyDown={(event) => { if (event.key === "Enter") openProductDetails(product); }}>
       <div className="search-product-img-wrap">
         <img src={product.image} alt={product.name} loading="lazy" />
         {product.isBestseller && <span className="search-product-badge">Top</span>}

@@ -123,6 +123,7 @@ function SearchPanel({ open, onClose, inputRef, panelRef, onMouseEnter, onMouseL
 
 function DesktopNav({ shopOpen, setShopOpen, closeUserMenu }) {
   const { categories, loading } = useProducts();
+  const currentPath = window.location.pathname;
   const [hovering, setHovering] = useState(false);
   const shopCloseTimer = useRef(null);
   const open = shopOpen || hovering;
@@ -140,14 +141,14 @@ function DesktopNav({ shopOpen, setShopOpen, closeUserMenu }) {
 
   return (
     <nav className="nav-desktop">
-      <a href="/" className="active">Home</a>
+      <a href="/" className={currentPath === "/" ? "active" : ""}>Home</a>
       <div
         className={`nav-shop${open ? " open" : ""}`}
         id="navShop"
         onMouseEnter={openShopMenu}
         onMouseLeave={scheduleShopClose}
       >
-        <a href="#" className="nav-shop-toggle" onClick={(event) => { event.preventDefault(); setShopOpen((value) => !value); closeUserMenu(); }}>
+        <a href="/shop" className={`nav-shop-toggle${currentPath === "/shop" ? " active" : ""}`} onClick={() => { closeUserMenu(); }}>
           Shop
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9" /></svg>
         </a>
@@ -215,6 +216,7 @@ function UserMenu({ loggedIn, setLoggedIn, open, setOpen, onMouseEnter, onMouseL
 
 function Sidebar({ open, onClose, loggedIn, setLoggedIn }) {
   const { categories, loading } = useProducts();
+  const currentPath = window.location.pathname;
   const [accordionOpen, setAccordionOpen] = useState(false);
 
   return (

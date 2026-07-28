@@ -11,6 +11,7 @@ import CheckoutPage from "./pages/CheckoutPage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import ForgotPasswordPage from "./pages/ForgotPasswordPage";
+import ProductDetailsPage from "./pages/ProductDetailsPage";
 
 function useRouter() {
   const [path, setPath] = useState(window.location.pathname);
@@ -41,6 +42,7 @@ function CurrentPage({ path, categoryParam }) {
   if (path === "/shop") return <ShopPage initialCategory={categoryParam} />;
   if (path === "/cart") return <CartPage />;
   if (path === "/checkout") return <CheckoutPage />;
+  if (path.startsWith("/product/")) return <ProductDetailsPage productId={decodeURIComponent(path.replace("/product/", ""))} />;
   if (path === "/login") return <LoginPage />;
   if (path === "/register") return <RegisterPage />;
   if (path === "/forgot-password") return <ForgotPasswordPage />;

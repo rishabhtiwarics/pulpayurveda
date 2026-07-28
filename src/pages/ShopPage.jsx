@@ -1,7 +1,11 @@
 import { useMemo, useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useProducts } from "../store/useProductStore.jsx";
-import ProductCard, { titleCase } from "../components/shop/ProductCard";
+import ProductCard, { CartIcon, titleCase } from "../components/shop/ProductCard";
 import ProductCardSkeleton from "../components/shop/ProductCardSkeleton";
+import InnorHero from "../components/shop/InnorHero";
+import ShopPerks from "../components/shop/ShopPerks";
+import { addToCart, openCart, selectIsInCart } from "../store/cartSlice";
 
 function TabIcon({ type }) {
   const icons = {
@@ -22,17 +26,41 @@ function TabIcon({ type }) {
   );
 }
 
-function InnorHero() {
+function ComboOfferBanner({ product, offer }) {
+  const dispatch = useDispatch();
+  const inCart = useSelector(selectIsInCart(product?.id));
+  if (!product) return null;
+
+  function handleAdd() {
+    if (inCart) return;
+    dispatch(addToCart(product));
+    dispatch(openCart());
+  }
+
   return (
-    <section className="innorhero" aria-label="Shop banner">
-      <div className="innorhero-frame">
-        <img src="/img/herobnner1.jpeg" alt="Pulp Ayurveda shop banner" loading="eager" />
+    <section className="shop-combo-offer" aria-label="Combo offer">
+      <div className="shop-combo-frame" style={{ backgroundImage: `url(${product.image})` }}>
+        <div className="shop-combo-overlay"></div>
+        <div className="shop-combo-content">
+          <span className="shop-combo-signature">Our main signature</span>
+          <p className="shop-combo-label">{offer?.label || "Combo Offer"}</p>
+          <h2>{product.name}</h2>
+          <p className="shop-combo-copy">{offer?.tagline || product.description}</p>
+          <div className="shop-combo-price">
+            <strong>Rs.{offer?.salePrice || product.discountPrice}</strong>
+            <span>Rs.{product.price}</span>
+          </div>
+          <button className={`shop-combo-btn${inCart ? " added" : ""}`} type="button" onClick={handleAdd} disabled={inCart}>
+            <CartIcon />
+            {inCart ? "Added" : "Add to cart"}
+          </button>
+        </div>
       </div>
     </section>
   );
 }
 export default function ShopPage({ initialCategory }) {
-  const { products, categories, loading } = useProducts();
+  const { products, categories, comboOffer, loading } = useProducts();
   const [activeFilter, setActiveFilter] = useState(initialCategory || "all");
   const [search, setSearch] = useState("");
 
@@ -41,6 +69,7 @@ export default function ShopPage({ initialCategory }) {
   }, [initialCategory]);
 
   const tabs = useMemo(() => ["all", ...categories.map((c) => c.id)], [categories]);
+  const comboProduct = useMemo(() => products.find((product) => product.id === comboOffer?.productId || product.isComboOffer), [comboOffer, products]);
 
   const visibleProducts = useMemo(() => {
     const nonCombo = products.filter((p) => !p.isComboOffer);
@@ -61,9 +90,10 @@ export default function ShopPage({ initialCategory }) {
 
   return (
     <>
-      
+
       <InnorHero />
-<section className="fav-section shop-page-section">
+      <ShopPerks />
+      <section className="fav-section shop-page-section">
         <div className="fav-wrap">
           <div className="shop-page-head shop-page-controls">
             <div className="fav-intro-copy">
