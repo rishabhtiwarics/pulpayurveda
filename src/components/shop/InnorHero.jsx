@@ -4,7 +4,7 @@ function formatCount(value) {
   return Math.round(value).toLocaleString("en-US");
 }
 
-export default function InnorHero() {
+export default function InnorHero({ title = "Shop Ayurveda Rituals", current = "Shop" }) {
   const [counts, setCounts] = useState({ customers: 0, products: 0, rating: 0 });
 
   useEffect(() => {
@@ -37,9 +37,9 @@ export default function InnorHero() {
           <div className="innorhero-breadcrumb" aria-label="Breadcrumb">
             <a href="/">Home</a>
             <span>/</span>
-            <strong>Shop</strong>
+            <strong>{current}</strong>
           </div>
-          <h1>Shop Ayurveda Rituals</h1>
+          <h1>{title}</h1>
         </div>
         <div className="innorhero-info-stats" aria-label="Shop highlights">
           <div><strong>{formatCount(counts.customers)}+</strong><span>Happy Customers</span></div>

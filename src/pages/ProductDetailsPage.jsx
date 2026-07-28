@@ -1,4 +1,4 @@
-﻿import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import InnorHero from "../components/shop/InnorHero";
 import ShopPerks from "../components/shop/ShopPerks";
@@ -178,7 +178,7 @@ export default function ProductDetailsPage({ productId }) {
               <div className="product-detail-price"><strong>Rs.{product.discountPrice}</strong>{product.price > product.discountPrice && <span>Rs.{product.price}</span>}<small>{Math.round(((product.price - product.discountPrice) / product.price) * 100)}% off</small><em>{product.bottleSize || "60 capsules"}</em></div>
               <p className="product-detail-stock">{product.stockText || "In stock and ready to dispatch"}</p>
               <div className="product-purchase-options">
-                <div className="product-purchase-row active"><span>Subscribe & save 15%<small>Delivered monthly · Free shipping</small></span><strong>Rs.{product.subscriptionPrice || Math.round(product.discountPrice * 0.85)}</strong></div>
+                <div className="product-purchase-row active"><span>Subscribe & save 15%<small>Delivered monthly - Free shipping</small></span><strong>Rs.{product.subscriptionPrice || Math.round(product.discountPrice * 0.85)}</strong></div>
                 <div className="product-purchase-row"><span>One-time purchase</span><strong>Rs.{product.discountPrice}</strong></div>
               </div>
               <div className="product-detail-actions">
@@ -192,7 +192,7 @@ export default function ProductDetailsPage({ productId }) {
                   {inCart ? "Update cart" : "Add to cart"}
                 </button>
               </div>
-              <p className="product-dispatch-note">{product.dispatchText || "1-2 business days dispatch · COD available"}</p>
+              <p className="product-dispatch-note">{product.dispatchText || "1-2 business days dispatch - COD available"}</p>
 
             </article>
             <div
@@ -209,6 +209,11 @@ export default function ProductDetailsPage({ productId }) {
             <details><summary>Active ingredients</summary><ul>{(product.activeIngredients || []).map((item) => <li key={item}>{item}</li>)}</ul></details>
             <details><summary>How to use</summary><ul>{(product.howToUse || []).map((item) => <li key={item}>{item}</li>)}</ul></details>
           </div>
+        </div>
+      </section>
+      <section className="product-detail-banner-section" aria-label="Product details banner">
+        <div className="product-details-wrap">
+          <img src="/img/prodetails.jpeg" alt="Ayurvedic product details" loading="lazy" />
         </div>
       </section>
       <section className="fav-section product-related-section">

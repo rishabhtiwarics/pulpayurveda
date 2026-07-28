@@ -6,7 +6,7 @@ const loginSchema = Yup.object({
   password: Yup.string().min(6, "Minimum 6 characters").required("Password is required"),
 });
 
-export default function LoginForm({ variant = "page", onSuccess, submitLabel = "Login" }) {
+export default function LoginForm({ variant = "page", onSuccess, submitLabel = "Login", actions }) {
   return (
     <Formik
       initialValues={{ email: "", password: "" }}
@@ -28,7 +28,7 @@ export default function LoginForm({ variant = "page", onSuccess, submitLabel = "
             <Field name="password" type="password" placeholder="Enter password" autoComplete="current-password" />
             <ErrorMessage name="password" component="small" />
           </label>
-          <button className="auth-submit" type="submit" disabled={isSubmitting}>{submitLabel}</button>
+          {actions ? actions({ isSubmitting, submitLabel }) : <button className="auth-submit" type="submit" disabled={isSubmitting}>{submitLabel}</button>}
           {variant !== "checkout" && <a className="auth-link" href="/forgot-password">Forgot password?</a>}
         </Form>
       )}

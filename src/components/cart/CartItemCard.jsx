@@ -34,12 +34,21 @@ export default function CartItemCard({ item, variant = "sidebar" }) {
             <span>{item.quantity}</span>
             <button type="button" aria-label="Increase quantity" onClick={() => dispatch(incrementItem(item.id))}>+</button>
           </div>
+          {compact && (
+            <button className="cart-remove" type="button" aria-label={`Remove ${item.name}`} onClick={() => dispatch(removeItem(item.id))}>
+              <TrashIcon />
+            </button>
+          )}
+        </div>
+      </div>
+      {!compact && (
+        <div className="cart-page-item-side">
+          <strong className="cart-line-total">Rs.{item.discountPrice * item.quantity}</strong>
           <button className="cart-remove" type="button" aria-label={`Remove ${item.name}`} onClick={() => dispatch(removeItem(item.id))}>
             <TrashIcon />
           </button>
         </div>
-      </div>
-      {!compact && <strong className="cart-line-total">Rs.{item.discountPrice * item.quantity}</strong>}
+      )}
     </article>
   );
 }
