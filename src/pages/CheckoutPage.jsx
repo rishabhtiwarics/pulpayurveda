@@ -130,8 +130,8 @@ export default function CheckoutPage() {
                       <label className="wide"><span>Address</span><Field as="textarea" name="address" placeholder="House no, street, area" /><ErrorMessage name="address" component="small" /></label>
                       <label><span>City</span><Field name="city" placeholder="City" /><ErrorMessage name="city" component="small" /></label>
                       <div className="checkout-step-actions wide">
-                        <button className="checkout-back-step" type="button" onClick={() => setStep(0)}>Back</button>
-                        <button className="auth-submit" type="submit">Next step</button>
+                        <button className="checkout-back-step checkout-icon-btn" type="button" onClick={() => setStep(0)}><span aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M19 12H5" /><path d="M11 6l-6 6 6 6" /></svg></span>Back</button>
+                        <button className="auth-submit checkout-icon-btn" type="submit">Next step<span aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14" /><path d="M13 6l6 6-6 6" /></svg></span></button>
                       </div>
                     </Form>
                   </Formik>
@@ -148,7 +148,7 @@ export default function CheckoutPage() {
                         <label className={`payment-option${values.method === "razorpay" ? " active" : ""}`}><Field type="radio" name="method" value="razorpay" /><span><strong>Razorpay</strong><small>UPI, card, wallet payment option.</small></span></label>
                         <ErrorMessage name="method" component="small" />
                         <div className="checkout-step-actions">
-                          <button className="checkout-back-step" type="button" onClick={() => setStep(1)}>Back</button>
+                          <button className="checkout-back-step checkout-icon-btn" type="button" onClick={() => setStep(1)}><span aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M19 12H5" /><path d="M11 6l-6 6 6 6" /></svg></span>Back</button>
                           <button className="auth-submit" type="submit">Place order Rs.{summary.orderTotal}</button>
                         </div>
                         {(status || placed) && <p className="checkout-success">{status || "Order placed successfully."}</p>}
