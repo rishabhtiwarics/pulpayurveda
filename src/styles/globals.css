@@ -236,11 +236,15 @@
   .sidebar-nav a{display:flex;align-items:center;gap:12px;padding:15px 16px;border-radius:16px;font-size:18px;font-weight:600;font-family:'Baloo 2',sans-serif;color:var(--ink);transition:background .2s;}
   .sidebar-nav a svg{width:20px;height:20px;flex:none;color:var(--gold-2);}
   .sidebar-nav a:hover{background:var(--mint);}
-  .sidebar-accordion-toggle{width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:15px 16px;border-radius:16px;font-size:18px;font-weight:600;font-family:'Baloo 2',sans-serif;color:var(--ink);background:none;border:none;cursor:pointer;transition:background .2s;}
+  .sidebar-accordion-head{display:flex;align-items:center;gap:8px;}
+.sidebar-accordion-toggle{width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:15px 16px;border-radius:16px;font-size:18px;font-weight:600;font-family:'Baloo 2',sans-serif;color:var(--ink);background:none;border:none;cursor:pointer;transition:background .2s;}
   .sidebar-accordion-toggle:hover{background:var(--mint);}
+.sidebar-accordion-toggle.active{background:var(--mint);color:var(--gold-2);}
+.sidebar-accordion-arrow{width:48px;height:48px;border:0;border-radius:16px;background:none;color:var(--ink);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s;}
+.sidebar-accordion-arrow:hover{background:var(--mint);}
+.sidebar-accordion-arrow[aria-expanded="true"] .accordion-chevron{transform:rotate(180deg);}
   .accordion-chevron{color:var(--gold-2);transition:transform .3s ease;flex:none;}
-  .sidebar-accordion-toggle[aria-expanded="true"] .accordion-chevron{transform:rotate(180deg);}
-  .sidebar-accordion-panel{max-height:0;overflow:hidden;transition:max-height .35s ease;display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:0 8px;}
+    .sidebar-accordion-panel{max-height:0;overflow:hidden;transition:max-height .35s ease;display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:0 8px;}
   .sidebar-accordion-panel.open{max-height:500px;padding:8px 8px 4px;}
   .sidebar-accordion-panel a{display:flex;flex-direction:column;align-items:flex-start;gap:6px;padding:8px;border-radius:14px;font-size:13px;font-weight:700;color:var(--ink);}
   .sidebar-accordion-panel a:hover{background:var(--mint);color:var(--gold-2);}

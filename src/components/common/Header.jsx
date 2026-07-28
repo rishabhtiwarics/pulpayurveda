@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+﻿import { useEffect, useMemo, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useProducts } from "../../store/useProductStore.jsx";
 import ProductCard from "../shop/ProductCard";
@@ -180,8 +180,8 @@ function DesktopNav({ shopOpen, setShopOpen, closeUserMenu }) {
           </div>
         </div>
       </div>
-      <a href="#">About</a>
-      <a href="#">Contact</a>
+      <a href="/#about">About</a>
+      <a href="/#contact">Contact</a>
     </nav>
   );
 }
@@ -231,12 +231,14 @@ function Sidebar({ open, onClose, loggedIn, setLoggedIn }) {
         </div>
         <div className="sidebar-main">
           <nav className="sidebar-nav">
-            <a href="/">Home</a>
+            <a href="/" onClick={onClose}>Home</a>
             <div className="sidebar-accordion">
-              <button className="sidebar-accordion-toggle" id="shopAccordionToggle" aria-expanded={accordionOpen} onClick={() => setAccordionOpen((value) => !value)}>
-                Shop
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" className="accordion-chevron"><polyline points="6 9 12 15 18 9" /></svg>
-              </button>
+              <div className="sidebar-accordion-head">
+                <a href="/shop" className={`sidebar-accordion-toggle${currentPath === "/shop" ? " active" : ""}`} onClick={onClose}>Shop</a>
+                <button className="sidebar-accordion-arrow" id="shopAccordionToggle" type="button" aria-expanded={accordionOpen} aria-label="Toggle shop categories" onClick={() => setAccordionOpen((value) => !value)}>
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" className="accordion-chevron"><polyline points="6 9 12 15 18 9" /></svg>
+                </button>
+              </div>
               <div className={`sidebar-accordion-panel${accordionOpen ? " open" : ""}`} id="shopAccordionPanel">
                 {loading ? (
                   Array.from({ length: 8 }).map((_, i) => (
@@ -247,15 +249,15 @@ function Sidebar({ open, onClose, loggedIn, setLoggedIn }) {
                   ))
                 ) : (
                   categories.map((cat) => (
-                    <a href={`/shop?category=${cat.id}`} key={cat.id}>
+                    <a href={`/shop?category=${cat.id}`} key={cat.id} onClick={onClose}>
                       <img src={cat.image} alt={cat.name} />{cat.name}
                     </a>
                   ))
                 )}
               </div>
             </div>
-            <a href="#">About</a>
-            <a href="#">Contact</a>
+            <a href="/#about" onClick={onClose}>About</a>
+            <a href="/#contact" onClick={onClose}>Contact</a>
           </nav>
           <div className="sidebar-promo">
             <div className="tag">Just for you</div>
