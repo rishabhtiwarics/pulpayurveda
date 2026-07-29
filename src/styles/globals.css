@@ -969,3 +969,51 @@
 .pulp-contact-panel-submit:hover{background:#1f1f1f;transform:translateY(-2px);}
 .pulp-contact-panel-submit svg{width:16px;height:16px;}
 @media(max-width:600px){.pulp-contact-panel-section{padding:64px 0;}.pulp-contact-panel-wrap{padding:0 16px;}.pulp-contact-panel-card{padding:26px 22px;}.pulp-contact-panel-row-two{grid-template-columns:1fr;}.pulp-contact-panel-pill{font-size:12px;padding:9px 14px;}.pulp-contact-panel-head p{font-size:14px;}}
+
+/* Privacy policy page */
+.pulp-policy-section{background:#fff;padding:90px 0;font-family:'Nunito Sans',sans-serif;color:var(--ink);}
+.pulp-policy-wrap{max-width:980px;margin:0 auto;padding:0 30px;}
+.pulp-policy-head{text-align:center;max-width:720px;margin:0 auto 36px;}
+.pulp-policy-eyebrow{display:inline-flex;align-items:center;gap:10px;width:max-content;max-width:100%;font-size:11px;letter-spacing:.13em;text-transform:uppercase;font-weight:900;color:#000;background:#fff;border:1px solid rgba(0,0,0,.15);padding:7px 16px 7px 8px;border-radius:999px;margin:0 auto 10px;}
+.pulp-policy-eyebrow svg{width:24px;height:24px;flex:none;background:#000;color:#fff;stroke:#fff;border-radius:50%;padding:5px;}
+.pulp-policy-head h2{font-family:'Baloo 2',sans-serif;font-size:clamp(28px,3.8vw,42px);line-height:1.14;margin:0;color:#111;font-weight:800;}
+.pulp-policy-head p{font-size:15.5px;line-height:1.7;color:rgba(0,0,0,.62);font-weight:650;margin:14px 0 0;}
+.pulp-policy-card{background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 24px 52px -36px rgba(0,0,0,.36);overflow:hidden;}
+.pulp-policy-summary{display:flex;align-items:center;justify-content:space-between;gap:16px;background:#000;color:#fff;padding:18px 24px;font-size:13px;font-weight:800;}
+.pulp-policy-summary strong{font-family:'Baloo 2',sans-serif;font-size:15px;}
+.pulp-policy-summary span{color:rgba(255,255,255,.72);}
+.pulp-policy-list{display:grid;padding:8px 24px;}
+.pulp-policy-item{display:grid;grid-template-columns:58px 1fr;gap:18px;padding:24px 0;position:relative;}
+.pulp-policy-item:not(:last-child){border-bottom:1px solid rgba(0,0,0,.1);}
+.pulp-policy-num{font-family:'Baloo 2',sans-serif;font-size:30px;line-height:1;color:rgba(0,0,0,.16);font-weight:900;}
+.pulp-policy-item h3{font-family:'Baloo 2',sans-serif;margin:0 0 8px;color:#111;font-size:20px;line-height:1.2;font-weight:800;}
+.pulp-policy-item p{margin:0;color:rgba(0,0,0,.62);font-size:14.5px;line-height:1.75;font-weight:650;}
+.pulp-policy-contact{background:var(--mint);border-top:1px solid var(--line);padding:24px;}
+.pulp-policy-contact h3{font-family:'Baloo 2',sans-serif;margin:0 0 6px;font-size:20px;color:#111;}
+.pulp-policy-contact p{margin:0;color:rgba(0,0,0,.65);font-size:14.5px;line-height:1.65;font-weight:650;}
+.pulp-policy-contact a{font-weight:900;color:#000;text-decoration:underline;}
+@media(max-width:700px){.pulp-policy-section{padding:64px 0;}.pulp-policy-wrap{padding:0 16px;}.pulp-policy-summary{align-items:flex-start;flex-direction:column;gap:4px;padding:16px 18px;}.pulp-policy-list{padding:0 18px;}.pulp-policy-item{grid-template-columns:1fr;gap:8px;padding:22px 0;}.pulp-policy-num{font-size:24px;}.pulp-policy-contact{padding:20px 18px;}}
+
+/* Terms condition page */
+.pulp-terms-section{background:#fff;padding:90px 0;font-family:'Nunito Sans',sans-serif;color:var(--ink);}
+.pulp-terms-wrap{max-width:980px;margin:0 auto;padding:0 30px;}
+.pulp-terms-head{text-align:center;max-width:720px;margin:0 auto 36px;}
+.pulp-terms-eyebrow{display:inline-flex;align-items:center;gap:10px;width:max-content;max-width:100%;font-size:11px;letter-spacing:.13em;text-transform:uppercase;font-weight:900;color:#000;background:#fff;border:1px solid rgba(0,0,0,.15);padding:7px 16px 7px 8px;border-radius:999px;margin:0 auto 10px;}
+.pulp-terms-eyebrow svg{width:24px;height:24px;flex:none;background:#000;color:#fff;stroke:#fff;border-radius:50%;padding:5px;}
+.pulp-terms-head h2{font-family:'Baloo 2',sans-serif;font-size:clamp(28px,3.8vw,42px);line-height:1.14;margin:0;color:#111;font-weight:800;}
+.pulp-terms-head p{font-size:15.5px;line-height:1.7;color:rgba(0,0,0,.62);font-weight:650;margin:14px 0 0;}
+.pulp-terms-card{background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 24px 52px -36px rgba(0,0,0,.36);overflow:hidden;}
+.pulp-terms-summary{display:flex;align-items:center;justify-content:space-between;gap:16px;background:#000;color:#fff;padding:18px 24px;font-size:13px;font-weight:800;}
+.pulp-terms-summary strong{font-family:'Baloo 2',sans-serif;font-size:15px;}
+.pulp-terms-summary span{color:rgba(255,255,255,.72);}
+.pulp-terms-list{display:grid;padding:8px 24px;}
+.pulp-terms-item{display:grid;grid-template-columns:58px 1fr;gap:18px;padding:24px 0;position:relative;}
+.pulp-terms-item:not(:last-child){border-bottom:1px solid rgba(0,0,0,.1);}
+.pulp-terms-num{font-family:'Baloo 2',sans-serif;font-size:30px;line-height:1;color:rgba(0,0,0,.16);font-weight:900;}
+.pulp-terms-item h3{font-family:'Baloo 2',sans-serif;margin:0 0 8px;color:#111;font-size:20px;line-height:1.2;font-weight:800;}
+.pulp-terms-item p{margin:0;color:rgba(0,0,0,.62);font-size:14.5px;line-height:1.75;font-weight:650;}
+.pulp-terms-contact{background:var(--mint);border-top:1px solid var(--line);padding:24px;}
+.pulp-terms-contact h3{font-family:'Baloo 2',sans-serif;margin:0 0 6px;font-size:20px;color:#111;}
+.pulp-terms-contact p{margin:0;color:rgba(0,0,0,.65);font-size:14.5px;line-height:1.65;font-weight:650;}
+.pulp-terms-contact a{font-weight:900;color:#000;text-decoration:underline;}
+@media(max-width:700px){.pulp-terms-section{padding:64px 0;}.pulp-terms-wrap{padding:0 16px;}.pulp-terms-summary{align-items:flex-start;flex-direction:column;gap:4px;padding:16px 18px;}.pulp-terms-list{padding:0 18px;}.pulp-terms-item{grid-template-columns:1fr;gap:8px;padding:22px 0;}.pulp-terms-num{font-size:24px;}.pulp-terms-contact{padding:20px 18px;}}

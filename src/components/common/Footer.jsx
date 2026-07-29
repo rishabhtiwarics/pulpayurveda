@@ -1,4 +1,4 @@
-﻿export default function Footer() {
+export default function Footer() {
   const certifications = [
     { name: "GMP Quality", img: "/img/cert-gmp.png" },
     {
@@ -68,8 +68,8 @@
             <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><rect x="3" y="6" width="18" height="12" rx="3" /><path d="M11 10l4 2-4 2z" fill="currentColor" stroke="none" /></svg></a>
           </div>
           <div className="f6-links">
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms &amp; Condition</a>
+            <a href="/privacy-policy">Privacy Policy</a>
+            <a href="/terms-condition">Terms &amp; Condition</a>
           </div>
         </div>
         <div className="f6-contact">
