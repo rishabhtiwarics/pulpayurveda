@@ -1,21 +1,20 @@
 import { useState } from "react";
+import AuthPageShell from "../components/auth/AuthPageShell";
 import RegisterForm from "../components/auth/RegisterForm";
 
 export default function RegisterPage() {
   const [done, setDone] = useState(false);
+
+  function handleRegisterSuccess() {
+    window.localStorage.setItem("pulp-auth-logged-in", "true");
+    setDone(true);
+    window.history.pushState({}, "", "/");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
   return (
-    <section className="auth-page">
-      <div className="auth-shell">
-        <a className="auth-logo" href="/"><img src="/img/logo.png" alt="Pulp Ayurveda" /></a>
-        <div className="auth-card">
-          <span className="eyebrow fav-eyebrow">Join Pulp</span>
-          <h1>Registration</h1>
-          <p>Create your account for faster checkout.</p>
-          <RegisterForm onSuccess={() => setDone(true)} />
-          {done && <p className="auth-success">Account created successfully.</p>}
-          <p className="auth-switch">Already registered? <a href="/login">Login</a></p>
-        </div>
-      </div>
-    </section>
+    <AuthPageShell mode="register" success={done ? "Account created successfully." : ""}>
+      <RegisterForm onSuccess={handleRegisterSuccess} />
+    </AuthPageShell>
   );
 }

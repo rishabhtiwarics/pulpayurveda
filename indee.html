@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Essence — Sign in</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sage-1:#7f8b76;
+    --sage-2:#5f6b55;
+    --sage-3:#4a5442;
+    --ink:#171814;
+    --paper:#ffffff;
+    --line:rgba(23,24,20,0.10);
+    --muted:rgba(23,24,20,0.56);
+    --accent:#232619;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:'Nunito Sans',sans-serif;
+    color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,.brand-font{font-family:'Baloo 2',sans-serif;}
+  a{color:inherit;}
+
+  /* ===== Page wrapper ===== */
+  .page{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:48px 24px;
+    background: linear-gradient(180deg, rgba(0, 0, 0, .04) 0%, rgba(0, 0, 0, 0) 45%, rgba(0, 0, 0, .08) 100%);
+  }
+
+  /* ===== Card shell ===== */
+  .card{
+    width:min(980px, 100%);
+    background:var(--paper);
+    border-radius:22px;
+    overflow:hidden;
+    box-shadow:0 60px 120px -40px rgba(0,0,0,0.55), 0 2px 0 rgba(255,255,255,0.4) inset;
+  }
+  .titlebar{
+    display:flex;
+    align-items:center;
+    gap:7px;
+    padding:16px 20px 16px 36px;
+  }
+  .titlebar img{
+    height:24px;
+    width:auto;
+    display:block;
+  }
+
+  .split{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    min-height:520px;
+  }
+
+  /* ===== Left: form ===== */
+  .form-panel{
+    padding:36px 56px 44px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+  }
+  .login-icon{
+    width:46px;
+    height:46px;
+    border-radius:50%;
+    background:#000;
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex:none;
+    margin-bottom:18px;
+    box-shadow:0 10px 22px -12px rgba(0,0,0,0.55);
+  }
+  .login-icon svg{width:22px;height:22px;}
+  .form-heading{
+    font-size:23px;
+    font-weight:700;
+    line-height:1.25;
+    margin:0 0 6px;
+    letter-spacing:-0.01em;
+  }
+  .form-sub{
+    margin:0 0 26px;
+    font-size:13.5px;
+    color:var(--muted);
+    font-weight:600;
+  }
+  .field{margin-bottom:16px;}
+  .field-label-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:7px;
+  }
+  .field label{
+    display:block;
+    font-size:12.5px;
+    font-weight:800;
+    color:var(--ink);
+  }
+  .forgot-link{
+    font-size:12px;
+    font-weight:700;
+    color:var(--muted);
+    text-decoration:none;
+  }
+  .forgot-link:hover{color:var(--ink); text-decoration:underline;}
+  .field-input-wrap{
+    position:relative;
+    display:flex;
+    align-items:center;
+  }
+  .field-input-wrap svg{
+    position:absolute;
+    left:14px;
+    width:17px;
+    height:17px;
+    color:rgba(23,24,20,0.38);
+    pointer-events:none;
+    transition:color .15s ease;
+  }
+  .field-input-wrap:focus-within svg{color:var(--accent);}
+  .field input{
+    width:100%;
+    border:1px solid var(--line);
+    background:#fafaf9;
+    border-radius:10px;
+    padding:12px 14px 12px 42px;
+    font:inherit;
+    font-size:14px;
+    outline:none;
+    transition:border-color .15s ease, background .15s ease, box-shadow .15s ease;
+  }
+  .field input::placeholder{color:rgba(23,24,20,0.35);}
+  .field input:focus{
+    border-color:var(--accent);
+    background:#fff;
+    box-shadow:0 0 0 3px rgba(35,38,25,0.08);
+  }
+  .btn-create{
+    width:100%;
+    border:none;
+    background:var(--accent);
+    color:#fff;
+    padding:13px 16px;
+    border-radius:10px;
+    font-family:'Baloo 2',sans-serif;
+    font-weight:700;
+    font-size:14.5px;
+    letter-spacing:0.01em;
+    cursor:pointer;
+    margin-top:4px;
+    box-shadow:0 14px 24px -14px rgba(0,0,0,0.5);
+    transition:transform .18s ease, background .18s ease;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+  }
+  .btn-create svg{width:17px;height:17px; flex:none;}
+  .btn-create:hover{transform:translateY(-2px); background:#000;}
+
+  .divider{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin:20px 0;
+    color:rgba(23,24,20,0.4);
+    font-size:12px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+  }
+  .divider:before,.divider:after{content:"";height:1px;flex:1;background:var(--line);}
+
+  .social-row{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+  }
+  .social-btn{
+    height:44px;
+    border:1px solid var(--line);
+    background:#fff;
+    border-radius:10px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    transition:border-color .15s ease, transform .15s ease, background .15s ease;
+  }
+  .social-btn:hover{border-color:rgba(23,24,20,0.3); transform:translateY(-2px);}
+  .social-btn svg{width:18px;height:18px;}
+
+  .signin-line{
+    text-align:center;
+    margin:22px 0 0;
+    font-size:13px;
+    color:var(--muted);
+    font-weight:600;
+  }
+  .signin-line a{font-weight:800; color:var(--ink); text-decoration:none;}
+  .signin-line a:hover{text-decoration:underline;}
+
+  .terms-line{
+    text-align:center;
+    margin:22px 0 0;
+    font-size:11.5px;
+    color:rgba(23,24,20,0.42);
+    font-weight:600;
+    line-height:1.5;
+  }
+  .terms-line a{font-weight:800; color:rgba(23,24,20,0.6); text-decoration:underline;}
+
+  /* ===== Right: media panel ===== */
+  .media-panel{
+    position:relative;
+    border-radius:34px 0 0 0;
+    overflow:hidden;
+    background:var(--sage-2);
+  }
+  .media-panel img.hero{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center 18%;
+    display:block;
+  }
+  .media-panel:after{
+    content:"";
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(0,0,0,0.55) 100%);
+  }
+  .back-btn{
+    position:absolute;
+    top:18px; right:18px;
+    z-index:3;
+    height:40px;
+    padding:0 16px 0 12px;
+    border-radius:999px;
+    border:none;
+    background:#fff;
+    color:var(--ink);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:6px;
+    cursor:pointer;
+    text-decoration:none;
+    font-size:12.5px;
+    font-weight:800;
+    box-shadow:0 10px 22px -12px rgba(0,0,0,0.5);
+    transition:transform .18s ease, background .18s ease;
+  }
+  .back-btn:hover{transform:translateY(-2px); background:#fff;}
+  .back-btn svg{width:17px;height:17px; flex:none;}
+
+  .testimonial{
+    position:absolute;
+    left:16px; right:16px; bottom:16px;
+    z-index:3;
+    background:rgba(20,22,15,0.55);
+    backdrop-filter:blur(10px);
+    border:1px solid rgba(255,255,255,0.16);
+    border-radius:16px;
+    padding:16px 18px;
+    display:flex;
+    align-items:flex-start;
+    gap:12px;
+    color:#fff;
+  }
+  .testimonial-avatar{
+    width:34px;height:34px;
+    border-radius:50%;
+    flex:none;
+    background:linear-gradient(135deg,#c9d3b8,#8f9c78);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Baloo 2',sans-serif;
+    font-weight:700;
+    font-size:13px;
+    color:#2c3122;
+  }
+  .testimonial p{
+    margin:0 0 8px;
+    font-size:12.5px;
+    line-height:1.55;
+    font-weight:600;
+    color:rgba(255,255,255,0.92);
+  }
+  .testimonial strong{
+    display:block;
+    font-family:'Baloo 2',sans-serif;
+    font-size:12.5px;
+    font-weight:700;
+  }
+  .testimonial small{
+    display:block;
+    font-size:11px;
+    color:rgba(255,255,255,0.6);
+    font-weight:600;
+    margin-top:1px;
+  }
+  .offer-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    background:rgba(255,255,255,0.95);
+    color:var(--sage-3);
+    font-family:'Baloo 2',sans-serif;
+    font-weight:700;
+    font-size:11.5px;
+    padding:5px 10px;
+    border-radius:999px;
+    margin-bottom:8px;
+  }
+  .offer-badge svg{width:13px;height:13px;}
+  .testimonial-nav{
+    position:absolute;
+    right:14px; bottom:-30px;
+    display:none;
+  }
+
+  /* ===== Responsive ===== */
+  @media (max-width:900px){
+    .split{grid-template-columns:1fr;}
+    .media-panel{
+      order:-1;
+      border-radius:0;
+      min-height:280px;
+    }
+    .form-panel{padding:8px 34px 40px;}
+    .page{padding:0;}
+    .card{border-radius:0; width:100%; min-height:100vh;}
+    .titlebar{display:none;}
+  }
+  @media (max-width:480px){
+    .form-panel{padding:8px 22px 34px;}
+    .form-heading{font-size:20px;}
+    .social-row{gap:8px;}
+    .testimonial{left:10px; right:10px; bottom:12px; padding:13px 14px;}
+    .back-btn{top:14px; right:14px;}
+  }
+</style>
+</head>
+<body>
+
+  <div class="page">
+  <div class="card">
+    <div class="titlebar">
+      <img src="logo.png" alt="Logo">
+    </div>
+
+    <div class="split">
+
+      <!-- LEFT: FORM -->
+      <div class="form-panel">
+        <div class="login-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <h1 class="form-heading">Welcome back to Essence</h1>
+        <p class="form-sub">Sign in to explore your favorite fragrances.</p>
+
+        <form onsubmit="return false;">
+          <div class="field">
+            <label for="email">Email</label>
+            <div class="field-input-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z" opacity="0"/><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></svg>
+              <input id="email" type="email" placeholder="Enter your email" required>
+            </div>
+          </div>
+          <div class="field">
+            <div class="field-label-row">
+              <label for="password">Password</label>
+              <a class="forgot-link" href="#">Forgot password?</a>
+            </div>
+            <div class="field-input-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+              <input id="password" type="password" placeholder="Enter your password" required>
+            </div>
+          </div>
+          <button class="btn-create" type="submit">
+            Sign in
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 5 7 7-7 7"/></svg>
+          </button>
+        </form>
+
+        <p class="signin-line">New here? <a href="#">Create an account</a></p>
+        <p class="terms-line">By signing in, you agree to our <a href="#">terms of use</a>.</p>
+      </div>
+
+      <!-- RIGHT: MEDIA -->
+      <div class="media-panel">
+        <img class="hero" src="https://images.pexels.com/photos/9769853/pexels-photo-9769853.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="Perfume bottle">
+        <a class="back-btn" href="/" title="Back to home" aria-label="Back to home">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+          Back to home
+        </a>
+        <div class="testimonial">
+          <div>
+            <span class="offer-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="m6.4 4.6 2.8 2.8"/><path d="M2 12h4"/><path d="m6.4 19.4 2.8-2.8"/><path d="M12 18v4"/><path d="m17.6 19.4-2.8-2.8"/><path d="M22 12h-4"/><path d="m17.6 4.6-2.8 2.8"/></svg>
+              Limited time
+            </span>
+            <p>Get <strong style="display:inline">30% off</strong> our new fragrance collection. Offer ends soon, don't miss out.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  </div>
+
+</body>
+</html>

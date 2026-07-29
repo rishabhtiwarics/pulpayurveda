@@ -159,7 +159,7 @@ export default function CheckoutPage() {
               )}
             </div>
 
-            <aside className="checkout-summary">
+            <aside className="checkout-summary checkout-order-summary-panel">
               <h2>Order summary</h2>
               {items.map((item) => <CartItemCard key={item.id} item={item} variant="sidebar" />)}
               <div className="cart-summary-line"><span>Subtotal</span><strong>Rs.{summary.subtotal}</strong></div>

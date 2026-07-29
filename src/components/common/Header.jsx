@@ -1,4 +1,4 @@
-﻿import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useProducts } from "../../store/useProductStore.jsx";
 import ProductCard from "../shop/ProductCard";
@@ -187,6 +187,12 @@ function DesktopNav({ shopOpen, setShopOpen, closeUserMenu }) {
 }
 
 function UserMenu({ loggedIn, setLoggedIn, open, setOpen, onMouseEnter, onMouseLeave }) {
+  function handleLogout() {
+    window.localStorage.removeItem("pulp-auth-logged-in");
+    setLoggedIn(false);
+    setOpen(false);
+  }
+
   return (
     <div className={`user-menu${open ? " open" : ""}`} id="userMenu" onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
       <div className="wrap user-menu-inner">
@@ -198,22 +204,27 @@ function UserMenu({ loggedIn, setLoggedIn, open, setOpen, onMouseEnter, onMouseL
           <div className="user-profile">
             <img src={demoUser.image} alt={demoUser.name} />
             <div><strong>{demoUser.name}</strong><small>{demoUser.email}</small></div>
-            <button className="btn-outline user-menu-logout" onClick={() => { setLoggedIn(false); setOpen(false); }}>
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" /><path d="M16 17l5-5-5-5" /><path d="M21 12H9" /></svg>
-              Logout
-            </button>
+            <div className="user-menu-actions logged-in">
+              <a className="btn-solid user-auth-action" href="/profile" onClick={() => setOpen(false)}>
+                <AccountIcon />
+                Profile
+              </a>
+              <button className="btn-outline user-menu-logout" onClick={handleLogout}>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" /><path d="M16 17l5-5-5-5" /><path d="M21 12H9" /></svg>
+                Logout
+              </button>
+            </div>
           </div>
         ) : (
           <div className="user-menu-actions">
-            <button className="btn-solid user-auth-action" onClick={() => setLoggedIn(true)}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" /><path d="M10 17l5-5-5-5" /><path d="M15 12H3" /></svg>Login</button>
-            <button className="btn-outline user-auth-action" onClick={() => setLoggedIn(true)}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M19 8v6" /><path d="M22 11h-6" /></svg>Register</button>
+            <a className="btn-solid user-auth-action" href="/login" onClick={() => setOpen(false)}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" /><path d="M10 17l5-5-5-5" /><path d="M15 12H3" /></svg>Login</a>
+            <a className="btn-outline user-auth-action" href="/register" onClick={() => setOpen(false)}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M19 8v6" /><path d="M22 11h-6" /></svg>Register</a>
           </div>
         )}
       </div>
     </div>
   );
 }
-
 function Sidebar({ open, onClose, loggedIn, setLoggedIn }) {
   const { categories, loading } = useProducts();
   const currentPath = window.location.pathname;
@@ -270,19 +281,19 @@ function Sidebar({ open, onClose, loggedIn, setLoggedIn }) {
                   <span className="avatar">A</span>
                   <div className="user-info"><strong>{demoUser.name}</strong><small>{demoUser.email}</small></div>
                 </div>
-                <button className="btn-outline full" onClick={() => setLoggedIn(false)}>Log out</button>
+                <button className="btn-solid full" type="button" onClick={onClose}>Profile</button>
+                <button className="btn-outline full" onClick={() => { window.localStorage.removeItem("pulp-auth-logged-in"); setLoggedIn(false); }}>Log out</button>
               </>
             ) : (
               <>
-                <button className="btn-solid full" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px" }} onClick={() => setLoggedIn(true)}>
+                <a className="btn-solid full" href="/login" onClick={onClose} style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px" }}>
                   <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" /><path d="M10 17l5-5-5-5" /><path d="M15 12H3" /></svg>
                   Log in
-                </button>
-                <p className="signup-line">New here? <a href="#" onClick={(event) => { event.preventDefault(); setLoggedIn(true); }}>Create an account</a></p>
+                </a>
+                <p className="signup-line">New here? <a href="/register" onClick={onClose}>Create an account</a></p>
               </>
             )}
-          </div>
-        </div>
+          </div>        </div>
         <div className="sidebar-footer">
           <SocialLinks />
           <span className="sidebar-copy">&copy; 2026 Pulp Ayurveda</span>
@@ -299,7 +310,7 @@ export default function Header() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
   const [shopOpen, setShopOpen] = useState(false);
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(() => window.localStorage.getItem("pulp-auth-logged-in") === "true");
   const inputRef = useRef(null);
   const userWrapRef = useRef(null);
   const searchPanelRef = useRef(null);

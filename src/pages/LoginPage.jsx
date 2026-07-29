@@ -1,21 +1,20 @@
 import { useState } from "react";
+import AuthPageShell from "../components/auth/AuthPageShell";
 import LoginForm from "../components/auth/LoginForm";
 
 export default function LoginPage() {
   const [done, setDone] = useState(false);
+
+  function handleLoginSuccess() {
+    window.localStorage.setItem("pulp-auth-logged-in", "true");
+    setDone(true);
+    window.history.pushState({}, "", "/");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
   return (
-    <section className="auth-page">
-      <div className="auth-shell">
-        <a className="auth-logo" href="/"><img src="/img/logo.png" alt="Pulp Ayurveda" /></a>
-        <div className="auth-card">
-          <span className="eyebrow fav-eyebrow">Welcome back</span>
-          <h1>Login</h1>
-          <p>Access orders, saved details, and checkout faster.</p>
-          <LoginForm onSuccess={() => setDone(true)} />
-          {done && <p className="auth-success">Logged in successfully.</p>}
-          <p className="auth-switch">New here? <a href="/register">Create account</a></p>
-        </div>
-      </div>
-    </section>
+    <AuthPageShell mode="login" success={done ? "Logged in successfully." : ""}>
+      <LoginForm submitLabel="Sign in" onSuccess={handleLoginSuccess} />
+    </AuthPageShell>
   );
 }

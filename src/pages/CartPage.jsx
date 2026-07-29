@@ -45,7 +45,7 @@ export default function CartPage() {
                 <div className="cart-empty-state cart-page-empty"><strong>Your cart is empty</strong><p>Add products from the shop to continue.</p><a href="/shop">Shop products</a></div>
               )}
             </div>
-            <aside className="cart-page-summary">
+            <aside className="cart-page-summary cart-order-summary-panel">
               <h2>Order summary</h2>
               <div className="cart-summary-line"><span>Subtotal</span><strong>Rs.{subtotal}</strong></div>
               <div className="cart-summary-line"><span>Shipping</span><strong>{shipping ? `Rs.${shipping}` : "Free"}</strong></div>
