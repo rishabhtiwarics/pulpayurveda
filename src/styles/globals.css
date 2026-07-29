@@ -940,3 +940,32 @@
 .pulp-about-services-text p{font-size:14.5px;line-height:1.7;color:rgba(0,0,0,.6);font-weight:650;margin:0;max-width:560px;}
 @media(max-width:640px){.pulp-about-services-row{grid-template-columns:1fr;gap:10px;}.pulp-about-services-num{font-size:26px;}.pulp-about-services-body{gap:14px;}}
 @media(max-width:600px){.pulp-about-services-section{padding:64px 0;}.pulp-about-services-wrap{padding:0 16px;}.pulp-about-services-head p{font-size:14px;}}
+
+/* Contact panel section */
+.pulp-contact-panel-section{background:#fff;padding:100px 0;font-family:'Nunito Sans',sans-serif;color:var(--ink);}
+.pulp-contact-panel-wrap{max-width:760px;margin:0 auto;padding:0 30px;}
+.pulp-contact-panel-head{text-align:center;margin-bottom:36px;}
+.pulp-contact-panel-eyebrow{display:inline-flex;align-items:center;gap:10px;width:max-content;max-width:100%;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:900;color:#000;background:#fff;border:1px solid rgba(0,0,0,.15);padding:8px 18px 8px 9px;border-radius:999px;margin:0 auto 6px;}
+.pulp-contact-panel-eyebrow svg{width:28px;height:28px;flex:none;background:#000;color:#fff;stroke:#fff;border-radius:50%;padding:6px;}
+.pulp-contact-panel-head h2{font-family:'Baloo 2',sans-serif;font-size:clamp(28px,3.6vw,40px);font-weight:800;line-height:1.15;margin:0;color:var(--ink);}
+.pulp-contact-panel-head p{font-size:15px;line-height:1.65;color:rgba(0,0,0,.6);font-weight:650;margin:12px 0 0;}
+.pulp-contact-panel-strip{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:44px;}
+.pulp-contact-panel-pill{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:999px;padding:10px 18px;font-size:13px;font-weight:800;color:var(--ink);transition:border-color .2s ease,transform .2s ease;}
+.pulp-contact-panel-pill:hover{border-color:rgba(0,0,0,.3);transform:translateY(-2px);}
+.pulp-contact-panel-pill svg{width:16px;height:16px;color:#D6A21E;flex:none;}
+.pulp-contact-panel-card{border:1px solid var(--line);border-radius:16px;padding:40px;box-shadow:0 22px 44px -30px rgba(0,0,0,.24);background:#fff;}
+.pulp-contact-panel-form{display:grid;gap:16px;}
+.pulp-contact-panel-row-two{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.pulp-contact-panel-field{display:grid;gap:6px;color:var(--ink);font-size:12px;font-weight:900;}
+.pulp-contact-panel-field span{display:block;}
+.pulp-contact-panel-input-wrap{position:relative;display:flex;align-items:center;}
+.pulp-contact-panel-input-wrap svg{position:absolute;left:14px;width:17px;height:17px;color:rgba(0,0,0,.38);pointer-events:none;transition:color .15s ease;flex:none;}
+.pulp-contact-panel-textarea-wrap svg{top:14px;}
+.pulp-contact-panel-field input,.pulp-contact-panel-field textarea{width:100%;border:1px solid var(--line);border-radius:8px;background:#fff;padding:12px 13px 12px 42px;font:inherit;font-size:14px;outline:none;transition:border-color .15s ease,box-shadow .15s ease;}
+.pulp-contact-panel-field textarea{min-height:110px;resize:vertical;padding-top:14px;}
+.pulp-contact-panel-input-wrap:focus-within svg{color:#000;}
+.pulp-contact-panel-field input:focus,.pulp-contact-panel-field textarea:focus{border-color:#000;box-shadow:0 0 0 3px rgba(214,162,30,.16);}
+.pulp-contact-panel-submit{height:48px;border:0;border-radius:999px;background:#000;color:#fff;font-family:'Baloo 2',sans-serif;font-size:14px;font-weight:900;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:background .2s ease,transform .2s ease;}
+.pulp-contact-panel-submit:hover{background:#1f1f1f;transform:translateY(-2px);}
+.pulp-contact-panel-submit svg{width:16px;height:16px;}
+@media(max-width:600px){.pulp-contact-panel-section{padding:64px 0;}.pulp-contact-panel-wrap{padding:0 16px;}.pulp-contact-panel-card{padding:26px 22px;}.pulp-contact-panel-row-two{grid-template-columns:1fr;}.pulp-contact-panel-pill{font-size:12px;padding:9px 14px;}.pulp-contact-panel-head p{font-size:14px;}}

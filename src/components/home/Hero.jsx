@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
 
 const slides = [
-  ["/img/herobnner1.jpeg", "Pulp Ayurveda hero banner 1"],
-  ["/img/herobnner2.jpeg", "Pulp Ayurveda hero banner 2"]
+  ["/img/herobnner3.jpeg", "Pulp Ayurveda hero banner 1"],
+  ["/img/herobnner1.jpeg", "Pulp Ayurveda hero banner 2"]
 ];
 
 export default function Hero() {
@@ -24,8 +24,8 @@ export default function Hero() {
           </div>
         ))}
         <div className="slider-dots" id="sliderDots">
-          {slides.map(([, alt], index) => (
-            <button key={alt} className={index === current ? "active" : ""} aria-label={`Go to slide ${index + 1}`} onClick={() => setCurrent(index)} />
+          {slides.slice(0, 3).map(([, alt], index) => (
+            <button key={alt} className={index === current % Math.min(slides.length, 3) ? "active" : ""} aria-label={`Go to slide ${index + 1}`} onClick={() => setCurrent(index)} />
           ))}
         </div>
       </div>
