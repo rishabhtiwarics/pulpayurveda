@@ -1,12 +1,12 @@
 export default function Footer() {
   const certifications = [
-    { name: "GMP Quality", img: "/img/cert-gmp.png" },
+    { name: "GMP Quality", img: "/img/gmp-quality.png" },
     {
       name: "Ministry of AYUSH",
       img: "https://commons.wikimedia.org/wiki/Special:FilePath/Logo_Ministry_of_AYUSH.png"
     },
-    { name: "Make in India", img: "/img/cert-makeinindia.png" },
-    { name: "FSSAI", img: "/img/cert-fssai.png" },
+    { name: "Make in India", img: "/img/made-in-india.png" },
+    { name: "FSSAI", img: "/img/fssai-logo.png" },
     {
       name: "ISO 9001",
       img: "https://commons.wikimedia.org/wiki/Special:FilePath/ISO_9001-2015.svg"
