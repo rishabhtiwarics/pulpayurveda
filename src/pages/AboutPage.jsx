@@ -30,7 +30,7 @@ export default function AboutPage() {
               <p>Pulp Ayurveda began with one simple belief: wellness should feel honest, practical, and easy to repeat. Every formula is shaped around real routines, familiar concerns, and ingredients that belong in everyday care.</p>
               <p>We keep our blends focused, our labels clear, and our rituals simple so you can build consistency without noise. That is the promise behind every bottle we make.</p>
               <div className="pulp-founder-note-pills" aria-label="Founder highlights"><span className="pulp-founder-note-pill"><strong>12+</strong> years of care</span><span className="pulp-founder-note-pill"><strong>48</strong> wellness blends</span><span className="pulp-founder-note-pill"><strong>3</strong> generations inspired</span></div>
-              <div className="pulp-founder-note-sign"><span className="pulp-founder-note-sign-mark">Aria S.</span><div><strong>Aria Sinclair</strong><small>Founder, Essence</small></div></div>
+              <div className="pulp-founder-note-sign"><span className="pulp-founder-note-sign-mark">Sintu Max</span><div><strong>Sintu Max</strong><small>Founder, Essence</small></div></div>
             </div>
           </div>
         </div>
