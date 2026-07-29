@@ -4,6 +4,7 @@ import CustomerFavorites from "../components/home/CustomerFavorites";
 import MiddleBanner from "../components/home/MiddleBanner";
 import Bestsellers from "../components/home/Bestsellers";
 import PromiseBanner from "../components/home/PromiseBanner";
+import MiddleBanner2 from "../components/home/MiddleBanner2";
 import WatchShop from "../components/home/WatchShop";
 import PulpTestimonials from "../components/home/PulpTestimonials";
 
@@ -15,7 +16,8 @@ export default function HomePage() {
       <CustomerFavorites />
       <MiddleBanner />
       <Bestsellers />
-      <PromiseBanner />
+      {/* <PromiseBanner /> */}
+      <MiddleBanner2 />
       <WatchShop />
       <PulpTestimonials />
     </main>
