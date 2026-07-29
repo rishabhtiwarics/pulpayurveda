@@ -879,3 +879,64 @@
 .pulp-auth-badge svg{width:13px;height:13px;}
 @media(max-width:900px){.pulp-auth-page{padding:0;}.pulp-auth-card{width:100%;min-height:100vh;border-radius:0;}.pulp-auth-titlebar{display:none;}.pulp-auth-split{grid-template-columns:1fr;}.pulp-auth-media-panel{order:-1;border-radius:0;min-height:280px;}.pulp-auth-form-panel{padding:28px 34px 40px;}}
 @media(max-width:480px){.pulp-auth-titlebar{padding:14px 18px;}.pulp-auth-form-panel{padding:24px 22px 34px;}.pulp-auth-heading{font-size:20px;}.pulp-auth-offer{left:10px;right:10px;bottom:12px;padding:13px 14px;}.pulp-auth-back{top:14px;right:14px;}.pulp-auth-label-row{align-items:flex-start;flex-direction:column;gap:4px;}}
+
+/* About founder note */
+.pulp-founder-note-section{background:var(--mint-2);padding:90px 0;}
+.pulp-founder-note-grid{display:grid;grid-template-columns:.7fr 1.3fr;gap:0;border-radius:16px;overflow:hidden;box-shadow:0 30px 60px -34px rgba(0,0,0,.36);}
+.pulp-founder-note-photo{position:relative;min-height:520px;background:#1f1f1f;}
+.pulp-founder-note-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;}
+.pulp-founder-note-letter{background:#fff;padding:48px 52px;display:flex;flex-direction:column;justify-content:center;}
+.pulp-founder-note-eyebrow{display:inline-flex;width:max-content;max-width:100%;align-items:center;gap:8px;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:900;color:#000;background:#fff;border:1px solid rgba(0,0,0,.15);padding:6px 14px 6px 6px;border-radius:999px;margin-bottom:8px;}
+.pulp-founder-note-eyebrow svg{width:22px;height:22px;flex:none;background:#000;color:#fff;stroke:#fff;border-radius:50%;padding:5px;}
+.pulp-founder-note-letter h2{font-family:'Baloo 2',sans-serif;font-size:clamp(24px,2.8vw,32px);line-height:1.1;color:#111;margin:0 0 18px;}
+.pulp-founder-note-letter p{font-size:15px;line-height:1.8;color:rgba(0,0,0,.62);font-weight:650;margin:0 0 16px;max-width:560px;}
+.pulp-founder-note-pills{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 26px;}
+.pulp-founder-note-pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--mint);border-radius:999px;padding:8px 16px;font-size:12.5px;font-weight:900;color:#111;}
+.pulp-founder-note-pill strong{font-family:'Baloo 2',sans-serif;font-size:13.5px;color:#000;}
+.pulp-founder-note-sign{display:flex;align-items:center;gap:14px;}
+.pulp-founder-note-sign-mark{font-family:'Caveat',cursive;font-size:34px;line-height:1;color:#000;font-weight:700;}
+.pulp-founder-note-sign div strong{display:block;font-family:'Baloo 2',sans-serif;font-size:14px;color:#111;}
+.pulp-founder-note-sign div small{display:block;font-size:11.5px;color:rgba(0,0,0,.5);font-weight:800;}
+@media(max-width:900px){.pulp-founder-note-section{padding:64px 0;}.pulp-founder-note-grid{grid-template-columns:1fr;}.pulp-founder-note-photo{min-height:320px;}.pulp-founder-note-letter{padding:34px 26px;}}
+@media(max-width:600px){.pulp-founder-note-section{padding:48px 0;}.pulp-founder-note-grid{border-radius:10px;}.pulp-founder-note-photo{min-height:260px;}.pulp-founder-note-letter{padding:28px 20px;}.pulp-founder-note-eyebrow{font-size:9.5px;}.pulp-founder-note-pills{gap:8px;}.pulp-founder-note-pill{padding:7px 12px;font-size:11.5px;}}
+
+/* About purpose section */
+.pulp-about-purpose-section{background:#fff;padding:100px 0;}
+.pulp-about-purpose-wrap{max-width:var(--maxw);margin:0 auto;padding:0 30px;}
+.pulp-about-purpose-head{max-width:640px;margin:0 auto 56px;text-align:center;}
+.pulp-about-purpose-eyebrow{display:inline-flex;align-items:center;gap:8px;width:max-content;max-width:100%;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:900;color:#000;background:#fff;border:1px solid rgba(0,0,0,.15);padding:6px 14px 6px 6px;border-radius:999px;margin:0 auto 10px;}
+.pulp-about-purpose-eyebrow svg{width:22px;height:22px;flex:none;background:#000;color:#fff;stroke:#fff;border-radius:50%;padding:5px;}
+.pulp-about-purpose-head h2{font-family:'Baloo 2',sans-serif;font-weight:800;margin:0;font-size:clamp(28px,3.6vw,42px);line-height:1.18;color:var(--ink);}
+.pulp-about-purpose-head p{font-size:15.5px;line-height:1.65;color:rgba(0,0,0,.6);font-weight:650;margin:14px 0 0;}
+.pulp-about-purpose-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:0;align-items:stretch;}
+.pulp-about-purpose-col{padding:8px 46px;}
+.pulp-about-purpose-col:first-child{padding-left:0;}
+.pulp-about-purpose-col:last-child{padding-right:0;}
+.pulp-about-purpose-spine{width:1px;background:linear-gradient(180deg,transparent,rgba(0,0,0,.14) 12%,var(--ink) 50%,rgba(0,0,0,.14) 88%,transparent);position:relative;}
+.pulp-about-purpose-spine-mark{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:40px;height:40px;border-radius:50%;background:#000;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 18px -8px rgba(0,0,0,.4);}
+.pulp-about-purpose-spine-mark svg{width:18px;height:18px;}
+.pulp-about-purpose-tag{display:inline-flex;align-items:center;gap:8px;font-family:'Baloo 2',sans-serif;font-weight:900;font-size:12.5px;letter-spacing:.04em;text-transform:uppercase;color:#000;background:var(--mint);border:1px solid var(--line);padding:7px 16px;border-radius:999px;margin-bottom:18px;}
+.pulp-about-purpose-tag svg{width:15px;height:15px;color:#D6A21E;}
+.pulp-about-purpose-col h3{font-family:'Baloo 2',sans-serif;font-size:23px;font-weight:800;margin:0 0 12px;color:var(--ink);line-height:1.15;}
+.pulp-about-purpose-col p{font-size:15px;line-height:1.75;color:rgba(0,0,0,.6);font-weight:650;margin:0;}
+@media(max-width:820px){.pulp-about-purpose-grid{grid-template-columns:1fr;}.pulp-about-purpose-spine{width:100%;height:1px;background:linear-gradient(90deg,transparent,rgba(0,0,0,.14) 12%,var(--ink) 50%,rgba(0,0,0,.14) 88%,transparent);margin:36px 0;}.pulp-about-purpose-col{padding:0!important;}}
+@media(max-width:600px){.pulp-about-purpose-section{padding:64px 0;}.pulp-about-purpose-wrap{padding:0 16px;}.pulp-about-purpose-head{margin-bottom:40px;}.pulp-about-purpose-head p{font-size:14px;}.pulp-about-purpose-col h3{font-size:21px;}}
+
+/* About services section */
+.pulp-about-services-section{background:#fff;padding:100px 0;font-family:'Nunito Sans',sans-serif;color:var(--ink);}
+.pulp-about-services-wrap{max-width:1080px;margin:0 auto;padding:0 30px;}
+.pulp-about-services-head{max-width:640px;margin:0 auto 44px;text-align:center;}
+.pulp-about-services-eyebrow{display:inline-flex;align-items:center;gap:8px;width:max-content;max-width:100%;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:900;color:#000;background:#fff;border:1px solid rgba(0,0,0,.15);padding:6px 14px 6px 6px;border-radius:999px;margin:0 auto 10px;}
+.pulp-about-services-eyebrow svg{width:22px;height:22px;flex:none;background:#000;color:#fff;stroke:#fff;border-radius:50%;padding:5px;}
+.pulp-about-services-head h2{font-family:'Baloo 2',sans-serif;font-weight:800;margin:0;font-size:clamp(28px,4vw,42px);line-height:1.15;color:var(--ink);}
+.pulp-about-services-head p{font-size:15.5px;line-height:1.65;color:rgba(0,0,0,.6);font-weight:650;margin:14px 0 0;}
+.pulp-about-services-row{display:grid;grid-template-columns:70px 1fr;gap:24px;padding:32px 0;position:relative;}
+.pulp-about-services-row:not(:last-child)::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:linear-gradient(90deg,transparent,rgba(0,0,0,.14) 12%,rgba(0,0,0,.14) 88%,transparent);}
+.pulp-about-services-num{font-family:'Baloo 2',sans-serif;font-size:34px;font-weight:900;color:rgba(0,0,0,.15);line-height:1;}
+.pulp-about-services-body{display:flex;align-items:flex-start;gap:18px;}
+.pulp-about-services-icon{width:44px;height:44px;border-radius:50%;background:var(--mint);color:#000;display:flex;align-items:center;justify-content:center;flex:none;}
+.pulp-about-services-icon svg{width:20px;height:20px;color:#D6A21E;}
+.pulp-about-services-text h3{font-family:'Baloo 2',sans-serif;font-size:19px;font-weight:800;margin:0 0 8px;color:var(--ink);}
+.pulp-about-services-text p{font-size:14.5px;line-height:1.7;color:rgba(0,0,0,.6);font-weight:650;margin:0;max-width:560px;}
+@media(max-width:640px){.pulp-about-services-row{grid-template-columns:1fr;gap:10px;}.pulp-about-services-num{font-size:26px;}.pulp-about-services-body{gap:14px;}}
+@media(max-width:600px){.pulp-about-services-section{padding:64px 0;}.pulp-about-services-wrap{padding:0 16px;}.pulp-about-services-head p{font-size:14px;}}

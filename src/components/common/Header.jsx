@@ -180,7 +180,7 @@ function DesktopNav({ shopOpen, setShopOpen, closeUserMenu }) {
           </div>
         </div>
       </div>
-      <a href="/#about">About</a>
+      <a href="/about" className={currentPath === "/about" ? "active" : ""}>About</a>
       <a href="/#contact">Contact</a>
     </nav>
   );
@@ -267,7 +267,7 @@ function Sidebar({ open, onClose, loggedIn, setLoggedIn }) {
                 )}
               </div>
             </div>
-            <a href="/#about" onClick={onClose}>About</a>
+            <a href="/about" onClick={onClose}>About</a>
             <a href="/#contact" onClick={onClose}>Contact</a>
           </nav>
           <div className="sidebar-promo">

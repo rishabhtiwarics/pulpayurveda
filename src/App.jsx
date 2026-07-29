@@ -5,6 +5,7 @@ import { hydrateCart } from "./store/cartSlice";
 import Header from "./components/common/Header";
 import Footer from "./components/common/Footer";
 import HomePage from "./pages/HomePage";
+import AboutPage from "./pages/AboutPage";
 import ShopPage from "./pages/ShopPage";
 import CartPage from "./pages/CartPage";
 import CheckoutPage from "./pages/CheckoutPage";
@@ -39,6 +40,7 @@ function useRouter() {
 }
 
 function CurrentPage({ path, categoryParam }) {
+  if (path === "/about") return <AboutPage />;
   if (path === "/shop") return <ShopPage initialCategory={categoryParam} />;
   if (path === "/cart") return <CartPage />;
   if (path === "/checkout") return <CheckoutPage />;
